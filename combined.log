@@ -11,3 +11,6 @@
 {"level":"info","timestamp":"12-20-2024 16:39:52","message":"Initializing configuration...","data":{}}
 {"level":"info","timestamp":"12-20-2024 16:39:52","message":"Configuration initialized successfully.","data":{}}
 {"level":"info","timestamp":"12-20-2024 16:39:53","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-20-2024 21:26:49","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-20-2024 21:26:49","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-20-2024 21:26:50","message":"Server is running on http://localhost:5000","data":{}}

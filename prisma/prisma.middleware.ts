@@ -3,7 +3,7 @@ import Logger from "../common/Logger";
 
 const logger = Logger.getInstance();
 
-class PrismaMiddleware {
+export default class PrismaMiddleware {
   private prisma: PrismaClient;
 
   constructor(prisma: PrismaClient) {
@@ -32,5 +32,3 @@ class PrismaMiddleware {
     });
   }
 }
-
-export default PrismaMiddleware;

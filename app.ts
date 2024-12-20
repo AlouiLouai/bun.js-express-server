@@ -7,6 +7,7 @@ import express, {
 import prisma from "./prisma/prisma";
 import Config from "./common/config/Config";
 import Logger from "./common/Logger";
+import AuthRouter from "./router/auth.router";
 
 const app: Express = express();
 const config = Config.getInstance();
@@ -14,6 +15,10 @@ const logger = Logger.getInstance();
 
 // Middleware to handle JSON requests
 app.use(express.json());
+
+// Initialize and use the AuthRouter
+const authRouter = new AuthRouter(prisma);
+app.use("/auth", authRouter.router); // Mount the AuthRouter on the '/auth' route
 
 // Define a basic route
 app.get(
