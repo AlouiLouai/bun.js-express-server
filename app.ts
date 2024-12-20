@@ -5,9 +5,12 @@ import express, {
   type Express,
 } from "express";
 import prisma from "./prisma/prisma";
+import Config from "./common/config/Config";
+import Logger from "./common/Logger";
 
 const app: Express = express();
-const port = Bun.env.PORT || 3000;
+const config = Config.getInstance();
+const logger = Logger.getInstance();
 
 // Middleware to handle JSON requests
 app.use(express.json());
@@ -28,13 +31,13 @@ app.get(
 );
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(config.app_port, () => {
+  logger.info(`Server is running on http://localhost:${config.app_port}`);
 });
 
 process.on("SIGINT", async () => {
   // Gracefully close the database connection when the server shuts down
   await prisma.$disconnect();
-  console.log("Prisma client disconnected. Server shutting down.");
+  logger.info("Prisma client disconnected. Server shutting down.");
   process.exit();
 });
