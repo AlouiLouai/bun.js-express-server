@@ -1,0 +1,13 @@
+{"level":"info","timestamp":"12-20-2024 15:49:47","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-20-2024 15:49:47","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-20-2024 15:49:47","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-20-2024 15:51:11","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-20-2024 15:51:11","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-20-2024 15:51:11","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-20-2024 15:51:14","message":"Prisma client disconnected. Server shutting down.","data":{}}
+{"level":"info","timestamp":"12-20-2024 16:05:02","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-20-2024 16:05:02","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-20-2024 16:05:02","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-20-2024 16:39:52","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-20-2024 16:39:52","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-20-2024 16:39:53","message":"Server is running on http://localhost:5000","data":{}}

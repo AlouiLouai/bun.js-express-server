@@ -4,24 +4,16 @@ import express, {
   type NextFunction,
   type Express,
 } from "express";
-import SingletonDatabase from "./common/extension/Database";
+import prisma from "./prisma/prisma";
+import Config from "./common/config/Config";
+import Logger from "./common/Logger";
 
 const app: Express = express();
-const port = Bun.env.PORT || 3000;
+const config = Config.getInstance();
+const logger = Logger.getInstance();
 
 // Middleware to handle JSON requests
 app.use(express.json());
-
-// Check database connection before starting the server
-const db = SingletonDatabase.getInstance();
-db.checkAndCreateDatabase().then(async (isConnected) => {
-  if(isConnected) {
-    await db.createTestTable();
-  } else {
-    console.log("Unable to connect to the database or create it. Exiting...");
-    process.exit(1); // Exit the application if DB connection fails
-  }
-});
 
 // Define a basic route
 app.get(
@@ -39,13 +31,13 @@ app.get(
 );
 
 // Start the server
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(config.app_port, () => {
+  logger.info(`Server is running on http://localhost:${config.app_port}`);
 });
 
 process.on("SIGINT", async () => {
   // Gracefully close the database connection when the server shuts down
-  await db.close();
-  console.log("Database connection closed");
+  await prisma.$disconnect();
+  logger.info("Prisma client disconnected. Server shutting down.");
   process.exit();
 });
