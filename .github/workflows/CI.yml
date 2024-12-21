@@ -1,0 +1,99 @@
+name: CI Pipeline for Bun.js, Express, TypeScript, Prisma
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  # Install dependencies, run lint, test and build
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Bun.js (manual installation)
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          echo "$HOME/.bun/bin" >> $GITHUB_PATH
+          bun --version # Check Bun version
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run Linter
+        run: bun lint
+
+      - name: Run Tests
+        run: bun test
+
+      - name: Prisma Migrations
+        run: bun prisma migrate deploy
+
+      - name: Build the app
+        run: bun build
+
+  # Deploy to Staging (Optional)
+#   deploy_staging:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     if: github.ref == 'refs/heads/develop'
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Bun.js
+#         uses: jarred-sumner/bun-action@v0.1
+#         with:
+#           bun-version: "latest"
+
+#       - name: Deploy to Staging Server
+#         run: |
+#           # Example: SCP to a staging server (ensure secrets are set up)
+#           scp -r ./build/* user@staging-server:/path/to/staging/
+#           ssh user@staging-server "pm2 restart app"
+
+  # Deploy to Production (Optional)
+#   deploy_production:
+#     needs: build
+#     runs-on: ubuntu-latest
+#     if: github.ref == 'refs/heads/main'
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Bun.js
+#         uses: jarred-sumner/bun-action@v0.1
+#         with:
+#           bun-version: "latest"
+
+#       - name: Deploy to Production Server
+#         run: |
+#           # Example: SCP to production server (ensure secrets are set up)
+#           scp -r ./build/* user@production-server:/path/to/production/
+#           ssh user@production-server "pm2 restart app"
+
+  # Database Deployment (Optional)
+#   database_migrations:
+#     needs: build
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Set up Bun.js
+#         uses: jarred-sumner/bun-action@v0.1
+#         with:
+#           bun-version: "latest"
+
+#       - name: Run Prisma Migrations
+#         run: bun prisma migrate deploy
+
