@@ -4,16 +4,22 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { service } from "../common/decorators/layer.decorators";
 import Config from "../common/config/Config";
+import TokenService from "./token.services";
+import EmailService from "./email.services";
 
 @service()
 export default class AuthService {
-  private prisma: PrismaClient;
-  private logger = Logger.getInstance();
-  private config = Config.getInstance();
+  private readonly prisma: PrismaClient;
+  private readonly tokenService: TokenService;
+  private readonly emailService: EmailService;
+  private readonly logger = Logger.getInstance();
+  private readonly config = Config.getInstance();
   private readonly saltRounds = 10;
 
   constructor(prisma: PrismaClient) {
     this.prisma = prisma;
+    this.tokenService = new TokenService(prisma);
+    this.emailService = new EmailService();
   }
 
   /**
@@ -34,19 +40,26 @@ export default class AuthService {
   }
 
   /**
-   * login user
-   * @param email 
-   * @param password 
-   * @returns the connected user with token
+   * Login user and return user data with access token and refresh token.
+   * @param email - The email address of the user.
+   * @param password - The password provided by the user.
+   * @returns An object containing the user (without password), access_token, and refresh_token.
+   * @throws Error if login fails due to invalid email, password, or system issues.
    */
   public async loginUser(
     email: string,
     password: string
-  ): Promise<{ user: User; token: string }> {
+  ): Promise<{ user: User; access_token: string; refresh_token: string }> {
     try {
-      // Validate input
+      // Validate input: check for empty email and password
       if (!email || !password) {
         throw new Error("Email and password are required.");
+      }
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        throw new Error("Invalid email format.");
       }
 
       // Fetch the user by email
@@ -59,9 +72,6 @@ export default class AuthService {
         throw new Error("Invalid email or password.");
       }
 
-      // Log fetched user for debugging purposes (exclude password in production logs)
-      this.logger.info(`User found for email: ${email}`);
-
       // Verify the password matches the stored hashed password
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
@@ -69,25 +79,45 @@ export default class AuthService {
       }
 
       // Generate a JWT for the authenticated user
-      const token = jwt.sign(
+      const accessToken = jwt.sign(
         {
           sub: user.id,
           email: user.email,
-        }, // Payload
+        },
         this.config.jwt_secret, // Secret
         {
           expiresIn: this.config.jwt_expiry, // Token expiry
         }
       );
 
-      // Return the user (excluding sensitive fields like password) and token
-      const { password: _, ...userWithoutPassword } = user; // Exclude password from user object
-      return { user: userWithoutPassword as User, token };
-    } catch (error) {
+      // Generate refresh token (make expiry configurable in the config file)
+      const refreshToken = await this.tokenService.generateToken(
+        user.id,
+        "refresh",
+        this.config.jwt_expiry || 60 * 60 // 1 hour default
+      );
+
+      // Exclude sensitive fields like password from the user object
+      const { password: _, ...userWithoutPassword } = user;
+
+      // Return the user (without password), access token, and refresh token
+      return {
+        user: userWithoutPassword as User,
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      };
+    } catch (error: any) {
       // Log detailed error for debugging while throwing a user-friendly error message
       this.logger.error(`Login error: ${error}`);
+
+      // Custom error handling with different messages for better user feedback
+      if (error.message.includes("Invalid email or password")) {
+        throw new Error("Incorrect email or password. Please try again.");
+      }
+
+      // Catch-all for unexpected errors
       throw new Error(
-        "Login failed. Please check your credentials and try again."
+        "Login failed due to a system issue. Please try again later."
       );
     }
   }
@@ -131,6 +161,101 @@ export default class AuthService {
       error.code === "P2002" // Unique constraint error
     ) {
       throw new Error("A user with this email already exists.");
+    }
+  }
+
+  /**
+   * Forgot password
+   * @param email - email linked to fogot password account
+   */
+  public async forgotPassword(email: string): Promise<void> {
+    try {
+      // Fetch the user by email
+      const user = await this.prisma.user.findUnique({
+        where: { email: email },
+      });
+
+      if (!user) {
+        // Log the event and throw an error
+        this.logger.warn(
+          `Password reset attempted for non-existent email: ${email}`
+        );
+        throw new Error("User with that email not found!");
+      }
+
+      // Generate a password reset token (valid for 1 hour)
+      const resetToken = jwt.sign(
+        { userId: user.id, email: user.email },
+        this.config.jwt_secret as string, // Secure secret key from environment
+        { expiresIn: "1h" }
+      );
+
+      // Build the reset link (ensure the link is securely constructed)
+      const resetLink = `http://localhost:5000/auth/reset-password?token=${resetToken}`;
+
+      // Send the reset email with the link
+      await this.emailService.sendEmail(
+        user.email,
+        "Reset Your Password",
+        `<p>We received a request to reset your password. Please click the link below to reset it:</p>
+        <p><a href="${resetLink}">Reset Password</a></p>
+        <p>If you did not request this, please ignore this email.</p>`
+      );
+
+      // Log the successful sending of the email
+      this.logger.info(`Password reset email sent to ${email}`);
+    } catch (error: any) {
+      // Log and rethrow the error for the controller to handle
+      this.logger.error(
+        `Forgot password service error for email ${email}: ${error.message}`
+      );
+      throw new Error(
+        "An error occurred while processing your password reset request."
+      );
+    }
+  }
+
+  /**
+   * Verify and reset the password using the token from the reset password link.
+   * @param token - The reset password token sent via email.
+   * @param newPassword - The new password the user wants to set.
+   */
+  public async resetPassword(
+    token: string,
+    newPassword: string
+  ): Promise<void> {
+    try {
+      //Verify and decode the reset token
+      const decoded = this.tokenService.verifyResetToken(token);
+      if (!decoded) {
+        throw new Error("Invalid or expired reset token.");
+      }
+      // Retriev the user from the database using the decoded email or userId
+      const user = await this.prisma.user.findUnique({
+        where: { email: decoded.email },
+      });
+      if (!user) {
+        throw new Error("User not found.");
+      }
+      // Hash the new password using bcrypt before saving it to the database
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      //  Update the user's password in the database
+      await this.prisma.user.update({
+        where: { email: decoded.email },
+        data: { password: hashedPassword },
+      });
+      // Log success and notify the user (optional)
+      this.logger.info(`Password reset successful for ${decoded.email}`);
+      // Optional: Send a confirmation email to the user
+      await this.emailService.sendEmail(
+        decoded.email,
+        "Password Reset Successful",
+        "<p>Your password has been successfully reset. You can now log in with your new password.</p>"
+      );
+    } catch (error: any) {
+      // Log and rethrow the error
+      this.logger.error(`Error resetting password: ${error.message}`);
+      throw error;
     }
   }
 }

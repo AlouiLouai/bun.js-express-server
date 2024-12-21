@@ -22,3 +22,8 @@
 {"level":"error","timestamp":"12-21-2024 15:59:52","message":"Error in login method: Error: Login failed. Please check your credentials and try again.","data":{}}
 {"level":"error","timestamp":"12-21-2024 16:01:36","message":"register user service error : Error: Email is already in use.","data":{}}
 {"level":"error","timestamp":"12-21-2024 16:01:36","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 21:27:48","message":"Error initializing configuration: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"boolean\",\n    \"received\": \"string\",\n    \"path\": [\n      \"MAIL_USE_TLS\"\n    ],\n    \"message\": \"Expected boolean, received string\"\n  },\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"boolean\",\n    \"received\": \"string\",\n    \"path\": [\n      \"MAIL_USE_SSL\"\n    ],\n    \"message\": \"Expected boolean, received string\"\n  }\n]","data":{}}
+{"level":"error","timestamp":"12-21-2024 21:43:21","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 21:43:21","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 22:51:54","message":"Login error: Error: Invalid email or password.","data":{}}
+{"level":"error","timestamp":"12-21-2024 22:51:54","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}

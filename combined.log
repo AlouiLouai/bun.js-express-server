@@ -89,3 +89,73 @@
 {"level":"info","timestamp":"12-21-2024 16:01:48","message":"Configuration initialized successfully.","data":{}}
 {"level":"info","timestamp":"12-21-2024 16:01:48","message":"Server is running on http://localhost:5000","data":{}}
 {"level":"info","timestamp":"12-21-2024 16:01:52","message":"User found for email: lou@gmail.com","data":{}}
+{"level":"info","timestamp":"12-21-2024 20:10:49","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 20:10:49","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 20:10:50","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:27:48","message":"Initializing configuration...","data":{}}
+{"level":"error","timestamp":"12-21-2024 21:27:48","message":"Error initializing configuration: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"boolean\",\n    \"received\": \"string\",\n    \"path\": [\n      \"MAIL_USE_TLS\"\n    ],\n    \"message\": \"Expected boolean, received string\"\n  },\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"boolean\",\n    \"received\": \"string\",\n    \"path\": [\n      \"MAIL_USE_SSL\"\n    ],\n    \"message\": \"Expected boolean, received string\"\n  }\n]","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:29:09","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:29:09","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:29:09","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:32:13","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:32:13","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:32:13","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:43:13","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:43:13","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:43:13","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"error","timestamp":"12-21-2024 21:43:21","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 21:43:21","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:44:32","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:44:32","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:44:32","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:50:52","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:50:52","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 21:50:52","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:08:03","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:08:03","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:08:03","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:08:53","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:08:53","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:08:53","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:10:27","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:10:27","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:10:27","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:13:23","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:13:23","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:13:23","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:14:31","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:14:31","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:14:31","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:19:10","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:19:10","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:19:10","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:19:16","message":"Password reset email sent to louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:42:20","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:42:20","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:42:20","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:42:32","message":"Password reset email sent to louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:44:24","message":"Password reset successful for louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:45:23","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:45:23","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:45:23","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:45:53","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:45:53","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:45:53","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:01","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:01","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:01","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:05","message":"Password reset successful for louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:21","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:21","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:21","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:30","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:30","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:30","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:47:37","message":"Password reset email sent to louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:48:04","message":"Password reset successful for louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:50:57","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:50:57","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:50:57","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 22:51:03","message":"Password reset successful for louaialoui1993@gmail.com","data":{}}
+{"level":"error","timestamp":"12-21-2024 22:51:54","message":"Login error: Error: Invalid email or password.","data":{}}
+{"level":"error","timestamp":"12-21-2024 22:51:54","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}

@@ -19,4 +19,18 @@ model User {
   lastname  String?
   email     String  @unique
   password  String
+  Token     Token[]
+}
+
+model Token {
+  id        String   @id @default(uuid())
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  token     String   @unique
+  type      String // "access", "refresh", "validation"
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+  isRevoked Boolean  @default(false)
+
+  @@index([userId, type])
 }
