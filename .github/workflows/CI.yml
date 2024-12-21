@@ -34,8 +34,8 @@ jobs:
     #   - name: Prisma Migrations
     #     run: bun prisma migrate deploy
 
-      - name: Build the app
-        run: bun build
+    #   - name: Build the app
+    #     run: bun build
 
   # Deploy to Staging (Optional)
 #   deploy_staging:
