@@ -8,6 +8,9 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    // allow metadata decorators
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
     // Bundler mode
     "moduleResolution": "node",
     "allowImportingTsExtensions": true,

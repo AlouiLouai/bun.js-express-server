@@ -1,7 +1,9 @@
 import { Prisma, type PrismaClient, type User } from "@prisma/client";
 import Logger from "../common/Logger";
 import bcrypt from "bcrypt";
+import { service } from "../common/decorators/layer.decorators"
 
+@service()
 export default class AuthService {
   private prisma: PrismaClient;
   private logger = Logger.getInstance();
@@ -29,7 +31,7 @@ export default class AuthService {
   }
 
   /**
-   * Registers a new user.
+   * Register a new user.
    * @param user - The user data to create.
    * @returns The created user.
    */
@@ -56,6 +58,10 @@ export default class AuthService {
       throw error;
     }
   }
+
+  /**
+   * Login user
+   */
 
   /**
    * Handles Prisma-specific database errors.

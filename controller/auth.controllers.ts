@@ -2,7 +2,10 @@ import type { Prisma, PrismaClient, User } from "@prisma/client";
 import type { Request, Response } from "express";
 import Logger from "../common/Logger";
 import AuthService from "../service/auth.services";
+import { post } from "../common/decorators/http.decorators";
+import { controller } from "../common/decorators/layer.decorators";
 
+@controller("/auth")
 export default class AuthController {
   private readonly prisma: PrismaClient;
   private readonly logger = Logger.getInstance();
@@ -18,6 +21,7 @@ export default class AuthController {
    * @param req - The HTTP request.
    * @param res - The HTTP response.
    */
+  @post("/register")
   public async register(req: Request, res: Response): Promise<void> {
     try {
       // extract user data from request body

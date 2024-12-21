@@ -41,3 +41,14 @@
 {"level":"info","timestamp":"12-21-2024 09:53:48","message":"Server is running on http://localhost:5000","data":{}}
 {"level":"error","timestamp":"12-21-2024 09:54:07","message":"register user service error : Error: Email is already in use.","data":{}}
 {"level":"error","timestamp":"12-21-2024 09:54:07","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"info","timestamp":"12-21-2024 10:41:54","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 10:41:54","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 10:41:54","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 10:48:46","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 10:48:46","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 10:48:46","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 10:50:54","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 10:50:54","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 10:50:54","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"error","timestamp":"12-21-2024 10:51:01","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 10:51:01","message":"Error in register method: Error: Email is already in use.","data":{}}
