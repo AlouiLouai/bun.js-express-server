@@ -102,4 +102,33 @@ export default class AuthController {
       });
     }
   }
+
+  /**
+   * Handles user login
+   * @param req- The HTTP request.
+   * @param res - The HTTP response.
+   */
+  @post("/reset-password")
+  public async resetPassword(req: Request, res: Response): Promise<void> {
+    try {
+      // Get the resetToken from query params
+      const resetToken = req.query.token as string;
+      if (!resetToken) {
+        res.status(400).json({ message: "Reset token is required." });
+        return
+      }
+      const {newPassword} = req.body
+      await this.authService.resetPassword(resetToken,newPassword)
+      res.status(200).json({
+        message: "Password reset successfully!!",
+      });
+    } catch (error) {
+      this.logger.error(`Error in reset password method: ${error}`);
+      // Send an error response with appropriate status and message
+      res.status(400).json({
+        message:
+          error instanceof Error ? error.message : "Unknown error occurred",
+      });
+    }
+  }
 }

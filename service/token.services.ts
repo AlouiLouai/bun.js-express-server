@@ -1,10 +1,13 @@
 import { randomBytes } from "crypto";
 import { service } from "../common/decorators/layer.decorators";
 import type { PrismaClient } from "@prisma/client";
+import jwt from "jsonwebtoken";
+import Config from "../common/config/Config";
 
 @service()
 export default class TokenService {
   private readonly prisma: PrismaClient;
+  private readonly config = Config.getInstance();
 
   constructor(prisma: PrismaClient) {
     this.prisma = prisma;
@@ -28,5 +31,22 @@ export default class TokenService {
     });
 
     return token;
+  }
+
+  /**
+   * Helper function to verify the reset token.
+   * @param token - The reset token.
+   * @returns The decoded token payload if valid, null if invalid or expired.
+   */
+  public verifyResetToken(
+    token: string
+  ): { userId: string; email: string } | null {
+    try {
+      // Verify the JWT token and return the decoded payload
+      const decoded = jwt.verify(token, this.config.jwt_secret as string);
+      return decoded as { userId: string; email: string };
+    } catch (error) {
+      return null; // Return null if the token is invalid or expired
+    }
   }
 }

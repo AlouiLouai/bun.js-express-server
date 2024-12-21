@@ -21,15 +21,25 @@ export default class AuthRouter {
   }
 
   @route("post", "/login")
-  private async login(req:Request, res: Response): Promise<void> {
+  private async login(req: Request, res: Response): Promise<void> {
     const authController = new AuthController(this.prisma);
     await authController.login(req, res);
   }
 
   @route("post", "/forgot-password")
-  private async forgotPassword(req:Request, res: Response): Promise<void>{
+  private async forgotPassword(req: Request, res: Response): Promise<void> {
     const authController = new AuthController(this.prisma);
     await authController.forgotPassword(req, res);
+  }
+
+  @route("post", "/reset-password", false, ["resetToken"])
+  private async resetPassword(req: Request, res: Response): Promise<void> {
+    const resetToken = req.query.token as string; // Extract resetToken from query params
+    if (!resetToken) {
+      res.status(400).json({ message: "Reset token is required." });
+    }
+    const authController = new AuthController(this.prisma);
+    await authController.resetPassword(req, res);
   }
 
   private initializeRoutes(): void {

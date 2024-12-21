@@ -186,7 +186,7 @@ export default class AuthService {
       // Generate a password reset token (valid for 1 hour)
       const resetToken = jwt.sign(
         { userId: user.id, email: user.email },
-        process.env.JWT_SECRET as string, // Secure secret key from environment
+        this.config.jwt_secret as string, // Secure secret key from environment
         { expiresIn: "1h" }
       );
 
@@ -212,6 +212,50 @@ export default class AuthService {
       throw new Error(
         "An error occurred while processing your password reset request."
       );
+    }
+  }
+
+  /**
+   * Verify and reset the password using the token from the reset password link.
+   * @param token - The reset password token sent via email.
+   * @param newPassword - The new password the user wants to set.
+   */
+  public async resetPassword(
+    token: string,
+    newPassword: string
+  ): Promise<void> {
+    try {
+      //Verify and decode the reset token
+      const decoded = this.tokenService.verifyResetToken(token);
+      if (!decoded) {
+        throw new Error("Invalid or expired reset token.");
+      }
+      // Retriev the user from the database using the decoded email or userId
+      const user = await this.prisma.user.findUnique({
+        where: { email: decoded.email },
+      });
+      if (!user) {
+        throw new Error("User not found.");
+      }
+      // Hash the new password using bcrypt before saving it to the database
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+      //  Update the user's password in the database
+      await this.prisma.user.update({
+        where: { email: decoded.email },
+        data: { password: hashedPassword },
+      });
+      // Log success and notify the user (optional)
+      this.logger.info(`Password reset successful for ${decoded.email}`);
+      // Optional: Send a confirmation email to the user
+      await this.emailService.sendEmail(
+        decoded.email,
+        "Password Reset Successful",
+        "<p>Your password has been successfully reset. You can now log in with your new password.</p>"
+      );
+    } catch (error: any) {
+      // Log and rethrow the error
+      this.logger.error(`Error resetting password: ${error.message}`);
+      throw error;
     }
   }
 }
