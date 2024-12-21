@@ -15,14 +15,12 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Set up Bun.js (manual installation)
-        run: |
-          curl -fsSL https://bun.sh/install | bash
-          echo "$HOME/.bun/bin" >> $GITHUB_PATH
-          # Ensure bun is available in the current session by loading the shell environment
-          bash -l -c "bun --version"  # This will ensure the new environment is loaded
+      - name: Set up Bun.js 
+        uses: oven-sh/setup-bun@v2
+        with: 
+            bun-version: 1.1.40
 
       - name: Install dependencies
         run: bun install
