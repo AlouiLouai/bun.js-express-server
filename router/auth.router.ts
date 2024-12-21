@@ -20,6 +20,12 @@ export default class AuthRouter {
     await authController.register(req, res);
   }
 
+  @route("post", "/login")
+  private async login(req:Request, res: Response): Promise<void> {
+    const authController = new AuthController(this.prisma);
+    await authController.login(req, res);
+  }
+
   private initializeRoutes(): void {
     // Automatically register all routes defined with `@route`
     registerRouter(this.router, this);

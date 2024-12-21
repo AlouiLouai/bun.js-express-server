@@ -2,7 +2,7 @@ import { Prisma, type PrismaClient, type User } from "@prisma/client";
 import Logger from "../common/Logger";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { service } from "../common/decorators/layer.decorators"
+import { service } from "../common/decorators/layer.decorators";
 import Config from "../common/config/Config";
 
 @service()
@@ -33,35 +33,62 @@ export default class AuthService {
     }
   }
 
-  private async loginUser(email: string, password: string): Promise<{user: User, token: string}>{
+  /**
+   * login user
+   * @param email 
+   * @param password 
+   * @returns the connected user with token
+   */
+  public async loginUser(
+    email: string,
+    password: string
+  ): Promise<{ user: User; token: string }> {
     try {
       // Validate input
       if (!email || !password) {
         throw new Error("Email and password are required.");
       }
-      // Find user by email
+
+      // Fetch the user by email
       const user = await this.prisma.user.findUnique({
         where: { email },
       });
+
+      // Handle case where the user is not found
       if (!user) {
         throw new Error("Invalid email or password.");
       }
-      // Verify password
+
+      // Log fetched user for debugging purposes (exclude password in production logs)
+      this.logger.info(`User found for email: ${email}`);
+
+      // Verify the password matches the stored hashed password
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
         throw new Error("Invalid email or password.");
       }
-      // Generate JWT
+
+      // Generate a JWT for the authenticated user
       const token = jwt.sign(
-        { sub: user.id, email: user.email }, // Payload
+        {
+          sub: user.id,
+          email: user.email,
+        }, // Payload
         this.config.jwt_secret, // Secret
-        { expiresIn: this.config.jwt_expiry } // Options
+        {
+          expiresIn: this.config.jwt_expiry, // Token expiry
+        }
       );
-      // Return the user and token
-      return { user, token };
+
+      // Return the user (excluding sensitive fields like password) and token
+      const { password: _, ...userWithoutPassword } = user; // Exclude password from user object
+      return { user: userWithoutPassword as User, token };
     } catch (error) {
+      // Log detailed error for debugging while throwing a user-friendly error message
       this.logger.error(`Login error: ${error}`);
-      throw new Error("Login failed. Please try again.");
+      throw new Error(
+        "Login failed. Please check your credentials and try again."
+      );
     }
   }
 
@@ -87,16 +114,12 @@ export default class AuthService {
       return data;
     } catch (error) {
       //Check for prisma-specific errors
-      this.handleDatabaseError(error)
+      this.handleDatabaseError(error);
       // Log and rethrow the error for the controller to handle
       this.logger.error(`register user service error : ${error}`);
       throw error;
     }
   }
-
-  /**
-   * Login user
-   */
 
   /**
    * Handles Prisma-specific database errors.

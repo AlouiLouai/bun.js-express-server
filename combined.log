@@ -66,3 +66,26 @@
 {"level":"info","timestamp":"12-21-2024 15:23:51","message":"Server is running on http://localhost:5000","data":{}}
 {"level":"error","timestamp":"12-21-2024 15:24:10","message":"register user service error : Error: Email is already in use.","data":{}}
 {"level":"error","timestamp":"12-21-2024 15:24:10","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"info","timestamp":"12-21-2024 15:49:27","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 15:49:27","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 15:49:27","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"error","timestamp":"12-21-2024 15:50:39","message":"Login error: Error: data and hash must be strings","data":{}}
+{"level":"error","timestamp":"12-21-2024 15:50:39","message":"Error in login method: Error: Login failed. Please try again.","data":{}}
+{"level":"error","timestamp":"12-21-2024 15:53:28","message":"Login error: Error: data and hash must be strings","data":{}}
+{"level":"error","timestamp":"12-21-2024 15:53:28","message":"Error in login method: Error: Login failed. Please try again.","data":{}}
+{"level":"info","timestamp":"12-21-2024 15:59:40","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 15:59:40","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 15:59:40","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 15:59:52","message":"User found for email: lou@gmail.com","data":{}}
+{"level":"error","timestamp":"12-21-2024 15:59:52","message":"Login error: Error: data and hash must be strings","data":{}}
+{"level":"error","timestamp":"12-21-2024 15:59:52","message":"Error in login method: Error: Login failed. Please check your credentials and try again.","data":{}}
+{"level":"info","timestamp":"12-21-2024 15:59:59","message":"User found for email: lou@gmail.com","data":{}}
+{"level":"info","timestamp":"12-21-2024 16:01:32","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 16:01:32","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 16:01:32","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"error","timestamp":"12-21-2024 16:01:36","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 16:01:36","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"info","timestamp":"12-21-2024 16:01:48","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 16:01:48","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 16:01:48","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-21-2024 16:01:52","message":"User found for email: lou@gmail.com","data":{}}

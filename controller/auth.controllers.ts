@@ -39,7 +39,37 @@ export default class AuthController {
       });
     } catch (error) {
       this.logger.error(`Error in register method: ${error}`);
-      // Respond with an error message
+      // Send an error response with appropriate status and message
+      res.status(400).json({
+        message:
+          error instanceof Error ? error.message : "Unknown error occurred",
+      });
+    }
+  }
+
+  /**
+   * Handles user login
+   * @param req- The HTTP request.
+   * @param res - The HTTP response.
+   */
+  @post("/login")
+  public async login(req: Request, res: Response): Promise<void> {
+    try {
+      // extract user data from request body
+      const { email, password } = req.body;
+      if (!email || !password) {
+        throw new Error("Email and password are required.");
+      }
+      // Call the registerUser method from AuthService
+      const { user, token } = await this.authService.loginUser(email, password);
+      // Send a success response
+      res.status(201).json({
+        message: "User logged successfully",
+        user,
+        token,
+      });
+    } catch (error) {
+      this.logger.error(`Error in login method: ${error}`);
       // Send an error response with appropriate status and message
       res.status(400).json({
         message:
