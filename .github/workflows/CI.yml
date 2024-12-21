@@ -20,6 +20,7 @@ jobs:
       - name: Set up Bun.js (manual installation)
         run: |
           curl -fsSL https://bun.sh/install | bash
+          echo "$HOME/.bun/bin" >> $GITHUB_PATH
           # Ensure bun is available in the current session by loading the shell environment
           bash -l -c "bun --version"  # This will ensure the new environment is loaded
 
