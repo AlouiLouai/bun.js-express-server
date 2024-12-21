@@ -13,6 +13,8 @@ export default class Config {
   readonly db_password: string;
   readonly db_name: string;
   readonly db_url: string;
+  readonly jwt_secret: string;
+  readonly jwt_expiry: string;
 
   private constructor() {
     try {
@@ -35,6 +37,8 @@ export default class Config {
         DB_PASSWORD: z.string(),
         DB_NAME: z.string(),
         DATABASE_URL: z.string(),
+        JWT_SECRET: z.string(),
+        JWT_EXPIRY: z.string(),
       });
 
       // Parse and validate the environment variables using Zod schema
@@ -47,6 +51,8 @@ export default class Config {
       this.db_password = parsedEnv.DB_PASSWORD;
       this.db_name = parsedEnv.DB_NAME;
       this.db_url = parsedEnv.DATABASE_URL;
+      this.jwt_secret = parsedEnv.JWT_SECRET;
+      this.jwt_expiry = parsedEnv.JWT_EXPIRY;
 
       this.logger.info("Configuration initialized successfully.");
     } catch (error: any) {

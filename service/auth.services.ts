@@ -1,12 +1,15 @@
 import { Prisma, type PrismaClient, type User } from "@prisma/client";
 import Logger from "../common/Logger";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 import { service } from "../common/decorators/layer.decorators"
+import Config from "../common/config/Config";
 
 @service()
 export default class AuthService {
   private prisma: PrismaClient;
   private logger = Logger.getInstance();
+  private config = Config.getInstance();
   private readonly saltRounds = 10;
 
   constructor(prisma: PrismaClient) {
@@ -27,6 +30,38 @@ export default class AuthService {
     } catch (error) {
       this.logger.error(`Error checking email existence: ${error}`);
       throw new Error("Failed to verify email existence.");
+    }
+  }
+
+  private async loginUser(email: string, password: string): Promise<{user: User, token: string}>{
+    try {
+      // Validate input
+      if (!email || !password) {
+        throw new Error("Email and password are required.");
+      }
+      // Find user by email
+      const user = await this.prisma.user.findUnique({
+        where: { email },
+      });
+      if (!user) {
+        throw new Error("Invalid email or password.");
+      }
+      // Verify password
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+        throw new Error("Invalid email or password.");
+      }
+      // Generate JWT
+      const token = jwt.sign(
+        { sub: user.id, email: user.email }, // Payload
+        this.config.jwt_secret, // Secret
+        { expiresIn: this.config.jwt_expiry } // Options
+      );
+      // Return the user and token
+      return { user, token };
+    } catch (error) {
+      this.logger.error(`Login error: ${error}`);
+      throw new Error("Login failed. Please try again.");
     }
   }
 
