@@ -8,8 +8,6 @@ import prisma from "./prisma/prisma";
 import Config from "./common/config/Config";
 import Logger from "./common/Logger";
 import AuthRouter from "./router/auth.router";
-import { AuthMiddleware } from "./common/middleware/auth.middlewares";
-
 const app: Express = express();
 const config = Config.getInstance();
 const logger = Logger.getInstance();
@@ -17,11 +15,6 @@ const logger = Logger.getInstance();
 // Middleware to handle JSON requests
 app.use(express.json());
 
-// Initialize the AuthMiddleware with your secret key
-const authMiddleware = new AuthMiddleware(config.jwt_secret as string);
-
-// Apply middleware globally
-app.use(authMiddleware.authenticate);
 
 // Initialize and use the AuthRouter
 const authRouter = new AuthRouter(prisma);

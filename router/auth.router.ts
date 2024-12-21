@@ -26,6 +26,12 @@ export default class AuthRouter {
     await authController.login(req, res);
   }
 
+  @route("post", "/forgot-password")
+  private async forgotPassword(req:Request, res: Response): Promise<void>{
+    const authController = new AuthController(this.prisma);
+    await authController.forgotPassword(req, res);
+  }
+
   private initializeRoutes(): void {
     // Automatically register all routes defined with `@route`
     registerRouter(this.router, this);

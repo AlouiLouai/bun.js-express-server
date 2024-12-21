@@ -79,4 +79,27 @@ export default class AuthController {
       });
     }
   }
+
+  /**
+   * Handles user login
+   * @param req- The HTTP request.
+   * @param res - The HTTP response.
+   */
+  @post("/forgot-password")
+  public async forgotPassword(req: Request, res: Response): Promise<void> {
+    try {
+      const { email } = req.body;
+      await this.authService.forgotPassword(email);
+      res.status(200).json({
+        message: "Email send successfully",
+      });
+    } catch (error) {
+      this.logger.error(`Error in forgot password method: ${error}`);
+      // Send an error response with appropriate status and message
+      res.status(400).json({
+        message:
+          error instanceof Error ? error.message : "Unknown error occurred",
+      });
+    }
+  }
 }
