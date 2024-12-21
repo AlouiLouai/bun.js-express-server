@@ -31,8 +31,8 @@ jobs:
       - name: Run Tests
         run: bun test
 
-      - name: Prisma Migrations
-        run: bun prisma migrate deploy
+    #   - name: Prisma Migrations
+    #     run: bun prisma migrate deploy
 
       - name: Build the app
         run: bun build
