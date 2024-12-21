@@ -1,0 +1,16 @@
+{"level":"error","timestamp":"12-21-2024 09:33:46","message":"register user service error : PrismaClientKnownRequestError: \nInvalid `this.prisma.user.create()` invocation in\nL:\\express-bun-server\\service\\auth.services.ts:39:43\n\n  36 //Replace the plain password with hashed password\n  37 const userData = {...user, password: hashedPassword}\n  38 //Save the user to database\n→ 39 const data = await this.prisma.user.create(\nUnique constraint failed on the fields: (`email`)","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:40:48","message":"Error in register method: Error: A user with this email already exists!","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:41:22","message":"register user service error : Error: Email already exist!","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:41:22","message":"Error in register method: Error: Email already exist!","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:42:00","message":"register user service error : Error: Email already exist!","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:42:00","message":"Error in register method: Error: Email already exist!","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:42:57","message":"register user service error : Error: Email already exist!","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:42:57","message":"Error in register method: Error: Email already exist!","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:47:02","message":"register user service error : Error: Email already exist!","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:47:02","message":"Error in register method: Error: Email already exist!","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:54:07","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 09:54:07","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 10:51:01","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 10:51:01","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 15:24:10","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-21-2024 15:24:10","message":"Error in register method: Error: Email is already in use.","data":{}}
