@@ -9,7 +9,7 @@ export default class TokenService {
   constructor(prisma: PrismaClient) {
     this.prisma = prisma;
   }
-  private async generateToken(
+  public async generateToken(
     userId: number,
     type: "access" | "refresh" | "validation",
     expiresIn: number

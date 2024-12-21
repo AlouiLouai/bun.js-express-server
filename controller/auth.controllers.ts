@@ -61,12 +61,14 @@ export default class AuthController {
         throw new Error("Email and password are required.");
       }
       // Call the registerUser method from AuthService
-      const { user, token } = await this.authService.loginUser(email, password);
+      const { user, access_token, refresh_token } =
+        await this.authService.loginUser(email, password);
       // Send a success response
       res.status(201).json({
         message: "User logged successfully",
         user,
-        token,
+        access_token: access_token,
+        refresh_token: refresh_token,
       });
     } catch (error) {
       this.logger.error(`Error in login method: ${error}`);

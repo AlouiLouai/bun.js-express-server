@@ -89,3 +89,6 @@
 {"level":"info","timestamp":"12-21-2024 16:01:48","message":"Configuration initialized successfully.","data":{}}
 {"level":"info","timestamp":"12-21-2024 16:01:48","message":"Server is running on http://localhost:5000","data":{}}
 {"level":"info","timestamp":"12-21-2024 16:01:52","message":"User found for email: lou@gmail.com","data":{}}
+{"level":"info","timestamp":"12-21-2024 20:10:49","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-21-2024 20:10:49","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-21-2024 20:10:50","message":"Server is running on http://localhost:5000","data":{}}

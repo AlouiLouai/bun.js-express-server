@@ -4,16 +4,19 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { service } from "../common/decorators/layer.decorators";
 import Config from "../common/config/Config";
+import TokenService from "./token.services";
 
 @service()
 export default class AuthService {
-  private prisma: PrismaClient;
-  private logger = Logger.getInstance();
-  private config = Config.getInstance();
+  private readonly prisma: PrismaClient;
+  private readonly tokenService: TokenService;
+  private readonly logger = Logger.getInstance();
+  private readonly config = Config.getInstance();
   private readonly saltRounds = 10;
 
   constructor(prisma: PrismaClient) {
     this.prisma = prisma;
+    this.tokenService = new TokenService(prisma);
   }
 
   /**
@@ -33,64 +36,89 @@ export default class AuthService {
     }
   }
 
-  /**
-   * login user
-   * @param email 
-   * @param password 
-   * @returns the connected user with token
-   */
-  public async loginUser(
-    email: string,
-    password: string
-  ): Promise<{ user: User; token: string }> {
-    try {
-      // Validate input
-      if (!email || !password) {
-        throw new Error("Email and password are required.");
-      }
-
-      // Fetch the user by email
-      const user = await this.prisma.user.findUnique({
-        where: { email },
-      });
-
-      // Handle case where the user is not found
-      if (!user) {
-        throw new Error("Invalid email or password.");
-      }
-
-      // Log fetched user for debugging purposes (exclude password in production logs)
-      this.logger.info(`User found for email: ${email}`);
-
-      // Verify the password matches the stored hashed password
-      const isPasswordValid = await bcrypt.compare(password, user.password);
-      if (!isPasswordValid) {
-        throw new Error("Invalid email or password.");
-      }
-
-      // Generate a JWT for the authenticated user
-      const token = jwt.sign(
-        {
-          sub: user.id,
-          email: user.email,
-        }, // Payload
-        this.config.jwt_secret, // Secret
-        {
-          expiresIn: this.config.jwt_expiry, // Token expiry
-        }
-      );
-
-      // Return the user (excluding sensitive fields like password) and token
-      const { password: _, ...userWithoutPassword } = user; // Exclude password from user object
-      return { user: userWithoutPassword as User, token };
-    } catch (error) {
-      // Log detailed error for debugging while throwing a user-friendly error message
-      this.logger.error(`Login error: ${error}`);
-      throw new Error(
-        "Login failed. Please check your credentials and try again."
-      );
+/**
+ * Login user and return user data with access token and refresh token.
+ * @param email - The email address of the user.
+ * @param password - The password provided by the user.
+ * @returns An object containing the user (without password), access_token, and refresh_token.
+ * @throws Error if login fails due to invalid email, password, or system issues.
+ */
+public async loginUser(
+  email: string,
+  password: string
+): Promise<{ user: User; access_token: string; refresh_token: string }> {
+  try {
+    // Validate input: check for empty email and password
+    if (!email || !password) {
+      throw new Error("Email and password are required.");
     }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      throw new Error("Invalid email format.");
+    }
+
+    // Fetch the user by email
+    const user = await this.prisma.user.findUnique({
+      where: { email },
+    });
+
+    // Handle case where the user is not found
+    if (!user) {
+      throw new Error("Invalid email or password.");
+    }
+
+    // Verify the password matches the stored hashed password
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      throw new Error("Invalid email or password.");
+    }
+
+    // Generate a JWT for the authenticated user
+    const accessToken = jwt.sign(
+      {
+        sub: user.id,
+        email: user.email,
+      },
+      this.config.jwt_secret, // Secret
+      {
+        expiresIn: this.config.jwt_expiry, // Token expiry
+      }
+    );
+
+    // Generate refresh token (make expiry configurable in the config file)
+    const refreshToken = await this.tokenService.generateToken(
+      user.id,
+      "refresh",
+      this.config.jwt_expiry || 60 * 60 // 1 hour default
+    );
+
+    // Exclude sensitive fields like password from the user object
+    const { password: _, ...userWithoutPassword } = user;
+
+    // Return the user (without password), access token, and refresh token
+    return {
+      user: userWithoutPassword as User,
+      access_token: accessToken,
+      refresh_token: refreshToken,
+    };
+  } catch (error: any) {
+    // Log detailed error for debugging while throwing a user-friendly error message
+    this.logger.error(`Login error: ${error}`);
+    
+    // Custom error handling with different messages for better user feedback
+    if (error.message.includes("Invalid email or password")) {
+      throw new Error("Incorrect email or password. Please try again.");
+    }
+
+    // Catch-all for unexpected errors
+    throw new Error(
+      "Login failed due to a system issue. Please try again later."
+    );
   }
+}
+
 
   /**
    * Register a new user.

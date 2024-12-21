@@ -14,7 +14,7 @@ export default class Config {
   readonly db_name: string;
   readonly db_url: string;
   readonly jwt_secret: string;
-  readonly jwt_expiry: string;
+  readonly jwt_expiry: number;
 
   private constructor() {
     try {
@@ -38,7 +38,12 @@ export default class Config {
         DB_NAME: z.string(),
         DATABASE_URL: z.string(),
         JWT_SECRET: z.string(),
-        JWT_EXPIRY: z.string(),
+        JWT_EXPIRY: z
+          .string()
+          .transform((val) => parseInt(val, 10))
+          .refine((val) => !isNaN(val), {
+            message: "JWT_EXPIRY must be a valid number",
+          }),
       });
 
       // Parse and validate the environment variables using Zod schema
