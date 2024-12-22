@@ -1,31 +1,39 @@
-import globals from 'globals';
-import pluginJs from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import js from '@eslint/js';
+import customTestConfig from './custom-test-config.js'; // if you have custom test configs
 
-/** @type {import('eslint').Linter.FlatConfig} */
 export default [
-  // JavaScript and TypeScript files
+  // Applying the ESLint plugin for JS files
+  js.configs.recommended,
+
+  // Optionally, you can add a custom config for tests if you need special rules for test files
+  {
+    ...customTestConfig,
+    files: ['**/*.test.js'], // Apply this configuration only to test files
+  },
+
+  // Additional custom config for TypeScript, if necessary
   {
     files: ['**/*.{js,mjs,cjs,ts}'],
     languageOptions: {
-      globals: globals.browser, // Define browser globals
+      globals: { browser: true }, // Define browser globals
     },
-    plugins: ['prettier'], // Add Prettier plugin
-    ...pluginJs.configs.recommended, // Apply eslint-plugin-js recommended config
-    ...tseslint.configs.recommended, // Apply typescript-eslint recommended config
-    extends: ['plugin:prettier/recommended'], // Add Prettier's recommended config
     rules: {
-      'prettier/prettier': 'error', // Enable Prettier errors as ESLint errors
+      semi: ['warn', 'always'],
     },
   },
-  // Additional overrides for TypeScript and JavaScript files
+
+  // Custom Prettier integration and rules
   {
     files: ['**/*.ts', '**/*.js'],
-    extends: ['plugin:prettier/recommended'], // Add Prettier's recommended config
+    extends: ['plugin:prettier/recommended'],
     plugins: ['prettier'],
     rules: {
       'prettier/prettier': 'error', // Enable Prettier errors as ESLint errors
     },
-    ignorePatterns: ['node_modules/', 'build/', 'dist/'],
+  },
+
+  // Ignore specific files
+  {
+    ignores: ['**/node_modules/', '**/build/', '**/dist/'],
   },
 ];
