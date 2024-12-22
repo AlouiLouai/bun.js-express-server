@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client";
-import PrismaMiddleware from "./prisma.middleware";
+import { PrismaClient } from '@prisma/client';
+import PrismaMiddleware from './prisma.middleware';
 
 // Create an instance of PrismaClient
 const prisma = new PrismaClient();

@@ -1,12 +1,12 @@
-import { Prisma, type PrismaClient, type User } from "@prisma/client";
-import Logger from "../common/Logger";
-import bcrypt from "bcrypt";
-import { omit } from "lodash";
-import jwt from "jsonwebtoken";
-import { service } from "../common/decorators/layer.decorators";
-import Config from "../common/config/Config";
-import TokenService from "./token.services";
-import EmailService from "./email.services";
+import { Prisma, type PrismaClient, type User } from '@prisma/client';
+import Logger from '../common/Logger';
+import bcrypt from 'bcrypt';
+import { omit } from 'lodash';
+import jwt from 'jsonwebtoken';
+import { service } from '../common/decorators/layer.decorators';
+import Config from '../common/config/Config';
+import TokenService from './token.services';
+import EmailService from './email.services';
 
 @service()
 export default class AuthService {
@@ -36,7 +36,7 @@ export default class AuthService {
       return !!user;
     } catch (error) {
       this.logger.error(`Error checking email existence: ${error}`);
-      throw new Error("Failed to verify email existence.");
+      throw new Error('Failed to verify email existence.');
     }
   }
 
@@ -54,12 +54,12 @@ export default class AuthService {
     try {
       // Validate input: check for empty email and password
       if (!email || !password) {
-        throw new Error("Email and password are required.");
+        throw new Error('Email and password are required.');
       }
       // Validate email format
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
-        throw new Error("Invalid email format.");
+        throw new Error('Invalid email format.');
       }
       // Fetch the user by email
       const user = await this.prisma.user.findUnique({
@@ -67,14 +67,14 @@ export default class AuthService {
       });
       // Handle case where the user is not found
       if (!user) {
-        throw new Error("Invalid email or password.");
+        throw new Error('Invalid email or password.');
       }
       // Extract hashed password and rename for clarity
-      const userWithoutPassword = omit(user, ["password"]);
+      const userWithoutPassword = omit(user, ['password']);
       // Verify the password matches the stored hashed password
       const isPasswordValid = await bcrypt.compare(password, user.password);
       if (!isPasswordValid) {
-        throw new Error("Invalid email or password.");
+        throw new Error('Invalid email or password.');
       }
       // Generate a JWT for the authenticated user
       const accessToken = jwt.sign(
@@ -90,7 +90,7 @@ export default class AuthService {
       // Generate refresh token (make expiry configurable in the config file)
       const refreshToken = await this.tokenService.generateToken(
         user.id,
-        "refresh",
+        'refresh',
         this.config.jwt_expiry || 60 * 60 // 1 hour default
       );
       // Return the user (without password), access token, and refresh token
@@ -102,15 +102,15 @@ export default class AuthService {
     } catch (error: unknown) {
       if (error instanceof Error) {
         // Custom error handling with different messages for better user feedback
-        if (error.message.includes("Invalid email or password")) {
-          throw new Error("Incorrect email or password. Please try again.");
+        if (error.message.includes('Invalid email or password')) {
+          throw new Error('Incorrect email or password. Please try again.');
         }
       }
       // Log detailed error for debugging while throwing a user-friendly error message
       this.logger.error(`Login error: ${error}`);
       // Catch-all for unexpected errors
       throw new Error(
-        "Login failed due to a system issue. Please try again later."
+        'Login failed due to a system issue. Please try again later.'
       );
     }
   }
@@ -126,7 +126,7 @@ export default class AuthService {
     try {
       //Check user email existence
       if (await this.isEmailTaken(user.email)) {
-        throw new Error("Email is already in use.");
+        throw new Error('Email is already in use.');
       }
       //Salt and hash password
       const hashedPassword = await bcrypt.hash(user.password, this.saltRounds);
@@ -151,9 +151,9 @@ export default class AuthService {
   private handleDatabaseError(error: unknown): void {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
-      error.code === "P2002" // Unique constraint error
+      error.code === 'P2002' // Unique constraint error
     ) {
-      throw new Error("A user with this email already exists.");
+      throw new Error('A user with this email already exists.');
     }
   }
 
@@ -173,14 +173,14 @@ export default class AuthService {
         this.logger.warn(
           `Password reset attempted for non-existent email: ${email}`
         );
-        throw new Error("User with that email not found!");
+        throw new Error('User with that email not found!');
       }
 
       // Generate a password reset token (valid for 1 hour)
       const resetToken = jwt.sign(
         { userId: user.id, email: user.email },
         this.config.jwt_secret as string, // Secure secret key from environment
-        { expiresIn: "1h" }
+        { expiresIn: '1h' }
       );
 
       // Build the reset link (ensure the link is securely constructed)
@@ -189,7 +189,7 @@ export default class AuthService {
       // Send the reset email with the link
       await this.emailService.sendEmail(
         user.email,
-        "Reset Your Password",
+        'Reset Your Password',
         `<p>We received a request to reset your password. Please click the link below to reset it:</p>
         <p><a href="${resetLink}">Reset Password</a></p>
         <p>If you did not request this, please ignore this email.</p>`
@@ -204,11 +204,11 @@ export default class AuthService {
           `Forgot password service error for email ${email}: ${error.message}`
         );
         throw new Error(
-          "An error occurred while processing your forgot password request."
+          'An error occurred while processing your forgot password request.'
         );
       } else {
-        this.logger.error("An unknown error occurred during forgot password.");
-        throw new Error("Unknown error during forgot password");
+        this.logger.error('An unknown error occurred during forgot password.');
+        throw new Error('Unknown error during forgot password');
       }
     }
   }
@@ -226,14 +226,14 @@ export default class AuthService {
       //Verify and decode the reset token
       const decoded = this.tokenService.verifyResetToken(token);
       if (!decoded) {
-        throw new Error("Invalid or expired reset token.");
+        throw new Error('Invalid or expired reset token.');
       }
       // Retriev the user from the database using the decoded email or userId
       const user = await this.prisma.user.findUnique({
         where: { email: decoded.email },
       });
       if (!user) {
-        throw new Error("User not found.");
+        throw new Error('User not found.');
       }
       // Hash the new password using bcrypt before saving it to the database
       const hashedPassword = await bcrypt.hash(newPassword, 10);
@@ -247,8 +247,8 @@ export default class AuthService {
       // Optional: Send a confirmation email to the user
       await this.emailService.sendEmail(
         decoded.email,
-        "Password Reset Successful",
-        "<p>Your password has been successfully reset. You can now log in with your new password.</p>"
+        'Password Reset Successful',
+        '<p>Your password has been successfully reset. You can now log in with your new password.</p>'
       );
     } catch (error: unknown) {
       // Log and rethrow the error
@@ -256,8 +256,8 @@ export default class AuthService {
         this.logger.error(`Error resetting password: ${error.message}`);
         throw error;
       } else {
-        this.logger.error("An unknown error occurred during reset password.");
-        throw new Error("Unknown error during reset password.");
+        this.logger.error('An unknown error occurred during reset password.');
+        throw new Error('Unknown error during reset password.');
       }
     }
   }
