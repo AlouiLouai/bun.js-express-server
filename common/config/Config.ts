@@ -1,5 +1,5 @@
-import { z } from "zod";
-import Logger from "../Logger";
+import { z } from 'zod';
+import Logger from '../Logger';
 
 export default class Config {
   private static instance: Config;
@@ -25,20 +25,20 @@ export default class Config {
 
   private constructor() {
     try {
-      this.logger.info("Initializing configuration...");
+      this.logger.info('Initializing configuration...');
       const envSchema = z.object({
         PORT: z
           .string()
           .transform((val) => parseInt(val, 10))
           .refine((val) => !isNaN(val), {
-            message: "PORT must be a valid number",
+            message: 'PORT must be a valid number',
           }),
         DB_HOST: z.string(),
         DB_PORT: z
           .string()
           .transform((val) => parseInt(val, 10))
           .refine((val) => !isNaN(val), {
-            message: "DB_PORT must be a valid number",
+            message: 'DB_PORT must be a valid number',
           }),
         DB_USER: z.string(),
         DB_PASSWORD: z.string(),
@@ -49,26 +49,26 @@ export default class Config {
           .string()
           .transform((val) => parseInt(val, 10))
           .refine((val) => !isNaN(val), {
-            message: "JWT_EXPIRY must be a valid number",
+            message: 'JWT_EXPIRY must be a valid number',
           }),
         MAIL_SERVER: z.string(),
         MAIL_PORT: z
           .string()
           .transform((val) => parseInt(val, 10))
           .refine((val) => !isNaN(val), {
-            message: "MAIL_PORT must be a valid number",
+            message: 'MAIL_PORT must be a valid number',
           }),
         MAIL_USE_TLS: z
           .string()
-          .transform((val) => val.toLowerCase() === "true") // Convert string "true" to boolean true
-          .refine((val) => typeof val === "boolean", {
-            message: "MAIL_USE_TLS must be a boolean",
+          .transform((val) => val.toLowerCase() === 'true') // Convert string "true" to boolean true
+          .refine((val) => typeof val === 'boolean', {
+            message: 'MAIL_USE_TLS must be a boolean',
           }),
         MAIL_USE_SSL: z
           .string()
-          .transform((val) => val.toLowerCase() === "true") // Convert string "true" to boolean true
-          .refine((val) => typeof val === "boolean", {
-            message: "MAIL_USE_SSL must be a boolean",
+          .transform((val) => val.toLowerCase() === 'true') // Convert string "true" to boolean true
+          .refine((val) => typeof val === 'boolean', {
+            message: 'MAIL_USE_SSL must be a boolean',
           }),
         MAIL_DEFAULT_SENDER: z.string(),
         MAIL_USERNAME: z.string(),
@@ -95,16 +95,16 @@ export default class Config {
       this.mail_username = parsedEnv.MAIL_USERNAME;
       this.mail_password = parsedEnv.MAIL_PASSWORD;
 
-      this.logger.info("Configuration initialized successfully.");
+      this.logger.info('Configuration initialized successfully.');
     } catch (error: unknown) {
       if (error instanceof Error) {
         this.logger.error(`Error initializing configuration: ${error.message}`);
         throw error; // Re-throw the error after logging
       } else {
         this.logger.error(
-          "An unknown error occurred during configuration initialization."
+          'An unknown error occurred during configuration initialization.'
         );
-        throw new Error("Unknown error during configuration initialization");
+        throw new Error('Unknown error during configuration initialization');
       }
     }
   }

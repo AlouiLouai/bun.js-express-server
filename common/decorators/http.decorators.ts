@@ -4,9 +4,9 @@
  */
 export function get(path: string): MethodDecorator {
   return (target, propertyKey, descriptor) => {
-    const routes = Reflect.getMetadata("routes", target.constructor) || [];
-    routes.push({ method: "get", path, handler: descriptor.value });
-    Reflect.defineMetadata("routes", routes, target.constructor);
+    const routes = Reflect.getMetadata('routes', target.constructor) || [];
+    routes.push({ method: 'get', path, handler: descriptor.value });
+    Reflect.defineMetadata('routes', routes, target.constructor);
   };
 }
 
@@ -16,8 +16,8 @@ export function get(path: string): MethodDecorator {
  */
 export function post(path: string): MethodDecorator {
   return (target, propertyKey, descriptor) => {
-    const routes = Reflect.getMetadata("routes", target.constructor) || [];
-    routes.push({ method: "post", path, handler: descriptor.value });
-    Reflect.defineMetadata("routes", routes, target.constructor);
+    const routes = Reflect.getMetadata('routes', target.constructor) || [];
+    routes.push({ method: 'post', path, handler: descriptor.value });
+    Reflect.defineMetadata('routes', routes, target.constructor);
   };
 }

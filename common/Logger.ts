@@ -1,4 +1,4 @@
-import winston from "winston";
+import winston from 'winston';
 
 const { combine, timestamp, json, printf } = winston.format;
 const timestampFormat = 'MM-DD-YYYY HH:mm:ss';
@@ -11,32 +11,32 @@ export default class Logger {
   public static getInstance(): winston.Logger {
     if (!Logger.instance) {
       Logger.instance = winston.createLogger({
-        level: "info",
+        level: 'info',
         format: combine(
-            timestamp({ format: timestampFormat}),
-            json(),
-            printf(({timestamp, level, message, ...data}) => {
-                const response = {
-                    level,
-                    timestamp,
-                    message,
-                    data
-                }
+          timestamp({ format: timestampFormat }),
+          json(),
+          printf(({ timestamp, level, message, ...data }) => {
+            const response = {
+              level,
+              timestamp,
+              message,
+              data,
+            };
 
-                return JSON.stringify(response)
-            })
+            return JSON.stringify(response);
+          })
         ),
         transports: [
           new winston.transports.File({
-            filename: "error.log",
-            level: "error",
+            filename: 'error.log',
+            level: 'error',
           }),
-          new winston.transports.File({ filename: "combined.log" }),
+          new winston.transports.File({ filename: 'combined.log' }),
         ],
       });
 
       // Add console transport if not in production
-      if (Bun.env.NODE_ENV !== "production") {
+      if (Bun.env.NODE_ENV !== 'production') {
         Logger.instance.add(
           new winston.transports.Console({
             format: winston.format.simple(),
