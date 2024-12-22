@@ -2,11 +2,9 @@ import type { Request, Response, NextFunction } from "express";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 
 // Extend the Request interface to include a user property
-declare global {
-  namespace Express {
-    interface Request {
-      user?: string | JwtPayload; // Adjust type as per your decoded payload structure
-    }
+declare module "express-serve-static-core" {
+  interface Request {
+    user?: string | JwtPayload;
   }
 }
 

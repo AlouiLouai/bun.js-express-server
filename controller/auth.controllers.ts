@@ -1,4 +1,4 @@
-import type { Prisma, PrismaClient, User } from "@prisma/client";
+import type { Prisma, PrismaClient } from "@prisma/client";
 import type { Request, Response } from "express";
 import Logger from "../common/Logger";
 import AuthService from "../service/auth.services";

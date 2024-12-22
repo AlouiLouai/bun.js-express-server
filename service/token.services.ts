@@ -45,7 +45,10 @@ export default class TokenService {
       // Verify the JWT token and return the decoded payload
       const decoded = jwt.verify(token, this.config.jwt_secret as string);
       return decoded as { userId: string; email: string };
-    } catch (error) {
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        throw error.message;
+      }
       return null; // Return null if the token is invalid or expired
     }
   }

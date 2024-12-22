@@ -96,9 +96,16 @@ export default class Config {
       this.mail_password = parsedEnv.MAIL_PASSWORD;
 
       this.logger.info("Configuration initialized successfully.");
-    } catch (error: any) {
-      this.logger.error(`Error initializing configuration: ${error.message}`);
-      throw error; // Re-throw the error after logging
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        this.logger.error(`Error initializing configuration: ${error.message}`);
+        throw error; // Re-throw the error after logging
+      } else {
+        this.logger.error(
+          "An unknown error occurred during configuration initialization."
+        );
+        throw new Error("Unknown error during configuration initialization");
+      }
     }
   }
 

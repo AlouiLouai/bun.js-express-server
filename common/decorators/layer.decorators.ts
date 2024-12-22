@@ -47,7 +47,7 @@ export function route(
  * @param router - The Express router instance.
  * @param RouterClass - The router class containing route definitions.
  */
-export function registerRouter(router: Router, instance: any): void {
+export function registerRouter<T extends object>(router: Router, instance: T): void {
   const routes: RouteDefinition[] =
     Reflect.getMetadata("routes", instance.constructor) || [];
 
