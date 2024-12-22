@@ -8,6 +8,18 @@
     "lint": "bun eslint .",
     "lint:fix": "bun eslint . --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint — fix",
+      "prettier — write",
+      "git add"
+    ]
+  },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@types/bun": "latest",
