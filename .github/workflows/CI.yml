@@ -24,9 +24,9 @@ jobs:
 
       - name: Install dependencies
         run: bun install
-
+      # need the pipline to fail even if there is any warnings
       - name: Run Linter
-        run: bun lint
+        run: bun lint --ci --max-warnings=0
 
       - name: Run Tests
         run: bun test
