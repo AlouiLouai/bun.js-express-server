@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import Logger from '../Logger';
+import process from 'node:process';
 
 export default class Config {
   private static instance: Config;
@@ -7,6 +8,7 @@ export default class Config {
 
   // Type definition for the environment variables using Zod schema
   readonly app_port: number;
+  readonly node_env: string;
   readonly db_host: string;
   readonly db_port: number;
   readonly db_user: string;
@@ -33,6 +35,7 @@ export default class Config {
           .refine((val) => !isNaN(val), {
             message: 'PORT must be a valid number',
           }),
+        NODE_ENV: z.string(),
         DB_HOST: z.string(),
         DB_PORT: z
           .string()
@@ -76,9 +79,10 @@ export default class Config {
       });
 
       // Parse and validate the environment variables using Zod schema
-      const parsedEnv = envSchema.parse(Bun.env);
+      const parsedEnv = envSchema.parse(process.env);
 
       this.app_port = parsedEnv.PORT;
+      this.node_env = parsedEnv.NODE_ENV;
       this.db_host = parsedEnv.DB_HOST;
       this.db_port = parsedEnv.DB_PORT;
       this.db_user = parsedEnv.DB_USER;

@@ -1,4 +1,5 @@
 import winston from 'winston';
+import Config from './config/Config';
 
 const { combine, timestamp, json, printf } = winston.format;
 const timestampFormat = 'MM-DD-YYYY HH:mm:ss';
@@ -10,6 +11,7 @@ export default class Logger {
 
   public static getInstance(): winston.Logger {
     if (!Logger.instance) {
+      const config = Config.getInstance();
       Logger.instance = winston.createLogger({
         level: 'info',
         format: combine(
@@ -36,7 +38,7 @@ export default class Logger {
       });
 
       // Add console transport if not in production
-      if (Bun.env.NODE_ENV !== 'production') {
+      if (config.node_env !== 'production') {
         Logger.instance.add(
           new winston.transports.Console({
             format: winston.format.simple(),

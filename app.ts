@@ -4,6 +4,7 @@ import express, {
   type NextFunction,
   type Express,
 } from 'express';
+import process from 'node:process';
 import prisma from './prisma/prisma';
 import Config from './common/config/Config';
 import Logger from './common/Logger';

@@ -2,11 +2,14 @@ import type { Transporter } from 'nodemailer';
 import nodemailer from 'nodemailer';
 import { service } from '../common/decorators/layer.decorators';
 import Config from '../common/config/Config';
+import Logger from '../common/Logger';
 
 @service()
 export default class EmailService {
   private readonly transporter: Transporter;
   private readonly config = Config.getInstance();
+  private readonly logger = Logger.getInstance();
+
   constructor() {
     this.transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -39,9 +42,9 @@ export default class EmailService {
 
     try {
       const info = await this.transporter.sendMail(mailOptions);
-      console.log('Email sent:', info.response);
+      this.logger.info('Email sent:', info.response);
     } catch (error) {
-      console.error('Error sending email:', error);
+      this.logger.error('Error sending email:', error);
     }
   }
 }

@@ -1,34 +1,31 @@
+import js from '@eslint/js';
+import typescriptEslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+
 export default [
-  // Optionally, you can add a custom config for tests if you need special rules for test files
-  {
-    files: ['**/*.test.js'], // Apply this configuration only to test files
-  },
+  // Base JavaScript configuration
+  js.configs.recommended,
 
-  // Additional custom config for TypeScript, if necessary
+  // TypeScript-specific configuration
   {
-    files: ['**/*.{js,mjs,cjs,ts}'],
+    files: ['**/*.{ts,tsx}'], // Match TypeScript files
     languageOptions: {
-      globals: { browser: true }, // Define browser globals
+      parser: tsParser, // Specify the TypeScript parser with parse() method
+      parserOptions: {
+        tsconfigRootDir: './', // Adjust as necessary for your project
+        project: './tsconfig.json', // Path to your TypeScript config file
+      },
+    },
+    plugins: {
+      '@typescript-eslint': typescriptEslint, // Include the TypeScript plugin
     },
     rules: {
-      semi: ['warn', 'always'],
+      '@typescript-eslint/no-unused-vars': 'warn', // Example TypeScript rule
     },
   },
-
-  // Custom Prettier integration and rules
-  {
-    files: ['**/*.ts', '**/*.js'],
-    plugins: ['prettier'],
-    rules: {
-      'prettier/prettier': 'error', // Enable Prettier errors as ESLint errors
-    },
-  },
-
-  // Adding Prettier's recommended config manually
-  prettierConfig,
 
   // Ignore specific files
   {
-    ignores: ['**/node_modules/', '**/build/', '**/dist/'],
+    ignores: ['**/node_modules/**', '**/dist/**', '**/build/**'],
   },
 ];
