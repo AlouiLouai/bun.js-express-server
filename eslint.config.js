@@ -1,5 +1,4 @@
 import js from '@eslint/js';
-import customTestConfig from './custom-test-config.js'; // if you have custom test configs
 
 export default [
   // Applying the ESLint plugin for JS files
@@ -7,7 +6,6 @@ export default [
 
   // Optionally, you can add a custom config for tests if you need special rules for test files
   {
-    ...customTestConfig,
     files: ['**/*.test.js'], // Apply this configuration only to test files
   },
 
