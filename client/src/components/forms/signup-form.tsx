@@ -10,7 +10,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
-export function LoginForm({
+export function SignUpForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) {
@@ -20,7 +20,7 @@ export function LoginForm({
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Welcome back</CardTitle>
           <CardDescription>
-            Login with your Apple or Google account
+            Register with your Apple or Google account
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -34,7 +34,7 @@ export function LoginForm({
                       fill="currentColor"
                     />
                   </svg>
-                  Login with Apple
+                  Register with Apple
                 </Button>
                 <Button variant="outline" className="w-full">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -43,7 +43,7 @@ export function LoginForm({
                       fill="currentColor"
                     />
                   </svg>
-                  Login with Google
+                  Register with Google
                 </Button>
               </div>
               <div className="relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t after:border-border">
@@ -53,11 +53,20 @@ export function LoginForm({
               </div>
               <div className="grid gap-6">
                 <div className="grid gap-2">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="firstname">Firstname</Label>
                   <Input
-                    id="email"
-                    type="email"
-                    placeholder="m@example.com"
+                    id="firstname"
+                    type="text"
+                    placeholder="your firstname..."
+                    required
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="lastname">Lastname</Label>
+                  <Input
+                    id="lastname"
+                    type="text"
+                    placeholder="your lastname..."
                     required
                   />
                 </div>
@@ -78,9 +87,9 @@ export function LoginForm({
                 </Button>
               </div>
               <div className="text-center text-sm">
-                Don&apos;t have an account?{' '}
-                <a href="#" className="underline underline-offset-4">
-                  Sign up
+                Already have an account?{' '}
+                <a href="/auth/signin" className="underline underline-offset-4">
+                  Sign in
                 </a>
               </div>
             </div>
