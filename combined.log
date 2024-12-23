@@ -174,3 +174,27 @@
 {"level":"info","timestamp":"12-22-2024 15:40:31","message":"Password reset email sent to louaialoui1993@gmail.com","data":{}}
 {"level":"info","timestamp":"12-22-2024 15:41:00","message":"Password reset successful for louaialoui1993@gmail.com","data":{}}
 {"level":"error","timestamp":"12-22-2024 15:41:05","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:25:54","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-23-2024 19:46:33","message":"Server is running on http://localhost:5000","data":{}}

@@ -16,7 +16,7 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
-    "types": ["bun","@types/bun", "node"],
+    "types": ["bun", "@types/bun", "node"],
     "esModuleInterop": true,
     // Best practices
     "strict": true,
