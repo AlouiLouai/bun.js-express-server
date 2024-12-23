@@ -6,7 +6,7 @@ import express, {
 } from 'express';
 import cors from "cors";
 import process from 'node:process';
-import prisma from './prisma/prisma';
+import prisma from '../prisma/prisma';
 import Config from './common/config/Config';
 import Logger from './common/Logger';
 import AuthRouter from './router/auth.router';
