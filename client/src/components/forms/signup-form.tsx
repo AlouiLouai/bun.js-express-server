@@ -52,21 +52,33 @@ export function SignUpForm({
                 </span>
               </div>
               <div className="grid gap-6">
-                <div className="grid gap-2">
-                  <Label htmlFor="firstname">Firstname</Label>
-                  <Input
-                    id="firstname"
-                    type="text"
-                    placeholder="your firstname..."
-                    required
-                  />
+                {/* Row for Firstname and Lastname */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="firstname">Firstname</Label>
+                    <Input
+                      id="firstname"
+                      type="text"
+                      placeholder="your firstname..."
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <Label htmlFor="lastname">Lastname</Label>
+                    <Input
+                      id="lastname"
+                      type="text"
+                      placeholder="your lastname..."
+                      required
+                    />
+                  </div>
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="lastname">Lastname</Label>
+                  <Label htmlFor="email">Email</Label>
                   <Input
-                    id="lastname"
-                    type="text"
-                    placeholder="your lastname..."
+                    id="email"
+                    type="email"
+                    placeholder="your@email..."
                     required
                   />
                 </div>
