@@ -4,7 +4,7 @@ import express, {
   type NextFunction,
   type Express,
 } from 'express';
-import cors from "cors";
+import cors from 'cors';
 import process from 'node:process';
 import prisma from '../prisma/prisma';
 import Config from './common/config/Config';

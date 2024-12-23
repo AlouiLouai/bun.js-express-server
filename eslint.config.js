@@ -26,6 +26,11 @@ export default [
 
   // Ignore specific files
   {
-    ignores: ['**/node_modules/**', '**/dist/**', '**/build/**'],
+    ignores: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/build/**',
+      '**/client/**',
+    ],
   },
 ];
