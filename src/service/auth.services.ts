@@ -184,7 +184,7 @@ export default class AuthService {
       );
 
       // Build the reset link (ensure the link is securely constructed)
-      const resetLink = `http://localhost:5000/auth/reset-password?token=${resetToken}`;
+      const resetLink = `http://localhost:3000/auth/reset-password?token=${resetToken}`;
 
       // Send the reset email with the link
       await this.emailService.sendEmail(

@@ -53,3 +53,6 @@
 {"level":"error","timestamp":"12-24-2024 10:43:27","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
 {"level":"error","timestamp":"12-24-2024 10:46:27","message":"Forgot password service error for email l@gmail.Com: Error: User with that email not found!","data":{}}
 {"level":"error","timestamp":"12-24-2024 10:46:27","message":"Error in forgot password method: Error: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 12:27:50","message":"Error resetting password: data and salt arguments required","data":{}}
+{"level":"error","timestamp":"12-24-2024 12:27:50","message":"Error in reset password method: Error: data and salt arguments required","data":{}}
+{"level":"error","timestamp":"12-24-2024 12:35:52","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}

@@ -117,8 +117,8 @@ export default class AuthController {
         res.status(400).json({ message: 'Reset token is required.' });
         return;
       }
-      const { newPassword } = req.body;
-      await this.authService.resetPassword(resetToken, newPassword);
+      const { new_password } = req.body;
+      await this.authService.resetPassword(resetToken, new_password);
       res.status(200).json({
         message: 'Password reset successfully!!',
       });
