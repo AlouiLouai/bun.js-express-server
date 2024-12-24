@@ -1,3 +1,4 @@
+'use client';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -7,13 +8,57 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import cookie from 'js-cookie';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useRouter } from 'next/navigation';
+import useAuth from '@/hooks/use.auth';
+import { useState } from 'react';
+import { toast } from '@/hooks/use-toast';
 
 export function SignInForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) {
+  const router = useRouter();
+  const { login, loading, error } = useAuth();
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const { user, access_token } = await login(formData);
+      // setting the cookie
+      cookie.set('access_token', access_token, { expires: 1 });
+      // Show success toast
+      toast({
+        variant: 'default',
+        title: 'Login Successful',
+        description: `Welcome, ${user.email}!`,
+      });
+      router.push('/in');
+    } catch (error: unknown) {
+      const errorMessage =
+        (error instanceof Error && error.message) ||
+        'An unexpected error occurred. Please try again.';
+
+      // Show error toast
+      toast({
+        variant: 'destructive',
+        title: 'Login Failed',
+        description: errorMessage,
+      });
+    }
+  };
+
   return (
     <div className={cn('flex flex-col gap-6', className)} {...props}>
       <Card>
@@ -24,7 +69,7 @@ export function SignInForm({
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="grid gap-6">
               <div className="flex flex-col gap-4">
                 <Button variant="outline" className="w-full">
@@ -57,6 +102,8 @@ export function SignInForm({
                   <Input
                     id="email"
                     type="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="m@example.com"
                     required
                   />
@@ -71,15 +118,29 @@ export function SignInForm({
                       Forgot your password?
                     </a>
                   </div>
-                  <Input id="password" type="password" required />
+                  <Input
+                    id="password"
+                    type="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
-                <Button type="submit" className="w-full">
-                  Login
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? 'Logging...' : 'Login'}
                 </Button>
+                {error && (
+                  <p className="text-sm text-red-500">
+                    {error || 'An error occurred. Please try again.'}
+                  </p>
+                )}
               </div>
               <div className="text-center text-sm">
                 Don&apos;t have an account?{' '}
-                <a href="/auth/sign-up" className="underline underline-offset-4">
+                <a
+                  href="/auth/sign-up"
+                  className="underline underline-offset-4"
+                >
                   Sign up
                 </a>
               </div>

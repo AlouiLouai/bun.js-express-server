@@ -38,3 +38,6 @@
 {"level":"error","timestamp":"12-24-2024 09:27:05","message":"Error in register method: Error: Email is already in use.","data":{}}
 {"level":"error","timestamp":"12-24-2024 09:36:41","message":"register user service error : Error: Email is already in use.","data":{}}
 {"level":"error","timestamp":"12-24-2024 09:36:41","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:39:37","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:39:37","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:11:12","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}

@@ -14,6 +14,12 @@ interface forgotPassword {
   email: string;
 }
 
+interface LoginResponse {
+  user: User;
+  access_token: string;
+  refresh_token: string;
+}
+
 export default class AuthService {
   private httpClient: HttpClient;
 
@@ -25,8 +31,15 @@ export default class AuthService {
     return this.httpClient.post<User>(`/auth/register`, userData);
   }
 
-  public async login(userData: Partial<User>): Promise<User> {
-    return this.httpClient.post<User>(`/auth/login`, userData);
+  public async login(userData: Partial<User>): Promise<LoginResponse> {
+    return this.httpClient.post<LoginResponse>(`/auth/login`, userData)
+    .then((response) => {
+      return {
+        user: response.user,
+        access_token: response.access_token,
+        refresh_token: response.refresh_token
+      }
+    });
   }
 
   public async forgotPassword(userData: forgotPassword) {
