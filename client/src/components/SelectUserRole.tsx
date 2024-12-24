@@ -16,7 +16,9 @@ export function SelectUserRole({
   const router = useRouter();
 
   const handleRoleSelection = (role: 'TEACHER' | 'STUDENT') => {
-    router.push(`/auth/sign-up?role=${role}`);
+    // Store role in session storage
+    sessionStorage.setItem('role', role);
+    router.push(`/auth/sign-up`);
   };
 
   return (

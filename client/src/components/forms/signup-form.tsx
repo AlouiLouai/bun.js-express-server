@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -13,16 +13,15 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import useAuth from '@/hooks/use.auth';
 import { toast } from '@/hooks/use-toast';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export function SignUpForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const role = searchParams.get('role');
   const { register, loading, error } = useAuth();
+  const [role, setRole] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -30,6 +29,14 @@ export function SignUpForm({
     password: '',
     role: '',
   });
+
+  useEffect(() => {
+    // Retrieve role from session storage when the component mounts
+    const storedRole = sessionStorage.getItem('role');
+    if (storedRole) {
+      setRole(storedRole);
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
