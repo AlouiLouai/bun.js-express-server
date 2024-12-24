@@ -350,3 +350,30 @@
 {"level":"error","timestamp":"12-24-2024 12:35:52","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}
 {"level":"info","timestamp":"12-24-2024 12:51:32","message":"Email sent:","data":{}}
 {"level":"info","timestamp":"12-24-2024 12:51:32","message":"Password reset email sent to louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:52:08","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 18:54:03","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:55:49","message":"Email sent:","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:55:49","message":"Password reset email sent to louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:56:26","message":"Password reset successful for louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-24-2024 18:56:27","message":"Email sent:","data":{}}
