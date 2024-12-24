@@ -8,6 +8,7 @@ interface User {
   lastname: string;
   name: string;
   email: string;
+  role: string;
 }
 
 interface forgotPassword {

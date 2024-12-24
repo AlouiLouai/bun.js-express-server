@@ -13,19 +13,22 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import useAuth from '@/hooks/use.auth';
 import { toast } from '@/hooks/use-toast';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export function SignUpForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const role = searchParams.get('role');
   const { register, loading, error } = useAuth();
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
     email: '',
     password: '',
+    role: '',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,14 +39,17 @@ export function SignUpForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await register(formData);
-      // Show success toast
-      toast({
-        variant: 'default',
-        title: 'Registration Successful',
-        description: `Welcome, ${formData.firstname}! Your account has been created.`,
-      });
-      router.push('/auth/sign-in');
+      if (role) {
+        formData.role = role;
+        await register(formData);
+        // Show success toast
+        toast({
+          variant: 'default',
+          title: 'Registration Successful',
+          description: `Welcome, ${formData.firstname}! Your account has been created.`,
+        });
+        router.push('/auth/sign-in');
+      }
     } catch (error: unknown) {
       const errorMessage =
         (error instanceof Error && error.message) ||

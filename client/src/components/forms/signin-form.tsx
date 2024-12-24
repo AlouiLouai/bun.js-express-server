@@ -138,7 +138,7 @@ export function SignInForm({
               <div className="text-center text-sm">
                 Don&apos;t have an account?{' '}
                 <a
-                  href="/auth/sign-up"
+                  href="/auth/select-user-role"
                   className="underline underline-offset-4"
                 >
                   Sign up

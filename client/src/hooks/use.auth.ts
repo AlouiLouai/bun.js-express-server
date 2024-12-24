@@ -10,6 +10,7 @@ const useAuth = () => {
     lastname: string;
     email: string;
     password: string;
+    role: string;
   }) => {
     setLoading(true);
     setError(null);
