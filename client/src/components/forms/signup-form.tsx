@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -11,12 +12,14 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import useAuth from '@/hooks/use.auth';
-import { useState } from 'react';
+import { toast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 
 export function SignUpForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) {
+  const router = useRouter();
   const { register, loading, error } = useAuth();
   const [formData, setFormData] = useState({
     firstname: '',
@@ -33,12 +36,25 @@ export function SignUpForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await register(formData);
-      console.log('User registered:', response);
-      // Handle success (e.g., redirect or show success message)
-    } catch (err) {
-      console.error(err);
-      // Error is already handled in the hook
+      await register(formData);
+      // Show success toast
+      toast({
+        variant: 'default',
+        title: 'Registration Successful',
+        description: `Welcome, ${formData.firstname}! Your account has been created.`,
+      });
+      router.push("/auth/sign-in")
+    } catch (error: unknown) {
+      const errorMessage =
+        (error instanceof Error && error.message) ||
+        'An unexpected error occurred. Please try again.';
+
+      // Show error toast
+      toast({
+        variant: 'destructive',
+        title: 'Registration Failed',
+        description: errorMessage,
+      });
     }
   };
 

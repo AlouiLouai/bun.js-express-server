@@ -198,3 +198,155 @@
 {"level":"info","timestamp":"12-23-2024 19:46:33","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
 {"level":"info","timestamp":"12-23-2024 19:46:33","message":"Mapped route: [POST] /reset-password","data":{}}
 {"level":"info","timestamp":"12-23-2024 19:46:33","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:07:36","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:07:36","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:09:06","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:09:06","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:21:06","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:21:06","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:27:05","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:27:05","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:36:41","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:36:41","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:39:04","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:39:37","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:39:37","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:11:12","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:39:41","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"warn","timestamp":"12-24-2024 10:40:25","message":"Password reset attempted for non-existent email: lou@gmail.com","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:40:25","message":"Forgot password service error for email lou@gmail.com: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:40:25","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
+{"level":"warn","timestamp":"12-24-2024 10:41:34","message":"Password reset attempted for non-existent email: l@gmail.Com","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:41:34","message":"Forgot password service error for email l@gmail.Com: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:41:34","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
+{"level":"warn","timestamp":"12-24-2024 10:41:52","message":"Password reset attempted for non-existent email: louai.aloui@esprit.tn","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:41:52","message":"Forgot password service error for email louai.aloui@esprit.tn: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:41:52","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
+{"level":"warn","timestamp":"12-24-2024 10:42:33","message":"Password reset attempted for non-existent email: a@gmail.com","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:42:33","message":"Forgot password service error for email a@gmail.com: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:42:33","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
+{"level":"warn","timestamp":"12-24-2024 10:43:27","message":"Password reset attempted for non-existent email: l@gmail.Com","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:43:27","message":"Forgot password service error for email l@gmail.Com: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:43:27","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:14","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"warn","timestamp":"12-24-2024 10:46:27","message":"Password reset attempted for non-existent email: l@gmail.Com","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:46:27","message":"Forgot password service error for email l@gmail.Com: Error: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:46:27","message":"Error in forgot password method: Error: User with that email not found!","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:40","message":"Email sent:","data":{}}
+{"level":"info","timestamp":"12-24-2024 10:46:40","message":"Password reset email sent to louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:57:00","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:25","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 11:58:29","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:00:15","message":"Email sent:","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:00:15","message":"Password reset email sent to louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:14:07","message":"Email sent:","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:14:07","message":"Password reset email sent to louaialoui1993@gmail.com","data":{}}
+{"level":"error","timestamp":"12-24-2024 12:27:50","message":"Error resetting password: data and salt arguments required","data":{}}
+{"level":"error","timestamp":"12-24-2024 12:27:50","message":"Error in reset password method: Error: data and salt arguments required","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:20","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:38","message":"Password reset successful for louaialoui1993@gmail.com","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:35:39","message":"Email sent:","data":{}}
+{"level":"error","timestamp":"12-24-2024 12:35:52","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:51:32","message":"Email sent:","data":{}}
+{"level":"info","timestamp":"12-24-2024 12:51:32","message":"Password reset email sent to louaialoui1993@gmail.com","data":{}}

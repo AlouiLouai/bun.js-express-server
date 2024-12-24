@@ -184,7 +184,7 @@ export default class AuthService {
       );
 
       // Build the reset link (ensure the link is securely constructed)
-      const resetLink = `http://localhost:5000/auth/reset-password?token=${resetToken}`;
+      const resetLink = `http://localhost:3000/auth/reset-password?token=${resetToken}`;
 
       // Send the reset email with the link
       await this.emailService.sendEmail(
@@ -197,19 +197,12 @@ export default class AuthService {
 
       // Log the successful sending of the email
       this.logger.info(`Password reset email sent to ${email}`);
-    } catch (error: unknown) {
+    } catch (error) {
       // Log and rethrow the error for the controller to handle
-      if (error instanceof Error) {
-        this.logger.error(
-          `Forgot password service error for email ${email}: ${error.message}`
-        );
-        throw new Error(
-          'An error occurred while processing your forgot password request.'
-        );
-      } else {
-        this.logger.error('An unknown error occurred during forgot password.');
-        throw new Error('Unknown error during forgot password');
-      }
+      this.logger.error(
+        `Forgot password service error for email ${email}: ${error}`
+      );
+      throw error;
     }
   }
 

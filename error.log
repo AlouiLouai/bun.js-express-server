@@ -28,3 +28,31 @@
 {"level":"error","timestamp":"12-21-2024 22:51:54","message":"Login error: Error: Invalid email or password.","data":{}}
 {"level":"error","timestamp":"12-21-2024 22:51:54","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}
 {"level":"error","timestamp":"12-22-2024 15:41:05","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:07:36","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:07:36","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:09:06","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:09:06","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:21:06","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:21:06","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:27:05","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:27:05","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:36:41","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:36:41","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:39:37","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:39:37","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:11:12","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:40:25","message":"Forgot password service error for email lou@gmail.com: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:40:25","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:41:34","message":"Forgot password service error for email l@gmail.Com: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:41:34","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:41:52","message":"Forgot password service error for email louai.aloui@esprit.tn: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:41:52","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:42:33","message":"Forgot password service error for email a@gmail.com: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:42:33","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:43:27","message":"Forgot password service error for email l@gmail.Com: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:43:27","message":"Error in forgot password method: Error: An error occurred while processing your forgot password request.","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:46:27","message":"Forgot password service error for email l@gmail.Com: Error: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 10:46:27","message":"Error in forgot password method: Error: User with that email not found!","data":{}}
+{"level":"error","timestamp":"12-24-2024 12:27:50","message":"Error resetting password: data and salt arguments required","data":{}}
+{"level":"error","timestamp":"12-24-2024 12:27:50","message":"Error in reset password method: Error: data and salt arguments required","data":{}}
+{"level":"error","timestamp":"12-24-2024 12:35:52","message":"Error in login method: Error: Incorrect email or password. Please try again.","data":{}}
