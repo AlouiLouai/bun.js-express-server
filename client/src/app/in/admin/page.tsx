@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-export default function In() {
+export default function InAdmin() {
   const [role, setRole] = useState<string | null>(null);
 
   useEffect(() => {
