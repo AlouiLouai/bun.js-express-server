@@ -1,8 +1,7 @@
 ## figure out email template with express
 
 
-## use the useAuth to complete the auth flow
-## use chadcn dialog for alerting UX/UI
+## use the useAuth to complete the auth flow => now I need useUser to get the connected user infos
 ## work on login with google
 
 
