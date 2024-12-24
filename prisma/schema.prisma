@@ -19,6 +19,7 @@ model User {
   lastname  String?
   email     String  @unique
   password  String
+  role      Role    @default(STUDENT)
   Token     Token[]
 }
 
@@ -33,4 +34,10 @@ model Token {
   isRevoked Boolean  @default(false)
 
   @@index([userId, type])
+}
+
+enum Role {
+  ADMIN
+  STUDENT
+  TEACHER
 }

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
@@ -21,12 +21,22 @@ export function SignUpForm({
 }: React.ComponentPropsWithoutRef<'div'>) {
   const router = useRouter();
   const { register, loading, error } = useAuth();
+  const [role, setRole] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
     email: '',
     password: '',
+    role: '',
   });
+
+  useEffect(() => {
+    // Retrieve role from session storage when the component mounts
+    const storedRole = sessionStorage.getItem('role');
+    if (storedRole) {
+      setRole(storedRole);
+    }
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -36,14 +46,17 @@ export function SignUpForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await register(formData);
-      // Show success toast
-      toast({
-        variant: 'default',
-        title: 'Registration Successful',
-        description: `Welcome, ${formData.firstname}! Your account has been created.`,
-      });
-      router.push('/auth/sign-in');
+      if (role) {
+        formData.role = role;
+        await register(formData);
+        // Show success toast
+        toast({
+          variant: 'default',
+          title: 'Registration Successful',
+          description: `Welcome, ${formData.firstname}! Your account has been created.`,
+        });
+        router.push('/auth/sign-in');
+      }
     } catch (error: unknown) {
       const errorMessage =
         (error instanceof Error && error.message) ||

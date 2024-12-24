@@ -15,8 +15,10 @@ export function SelectUserRole({
 }: React.ComponentPropsWithoutRef<'div'>) {
   const router = useRouter();
 
-  const handleRoleSelection = (role: 'teacher' | 'student') => {
-    router.push(`/auth/sign-up?role=${role}`);
+  const handleRoleSelection = (role: 'TEACHER' | 'STUDENT') => {
+    // Store role in session storage
+    sessionStorage.setItem('role', role);
+    router.push(`/auth/sign-up`);
   };
 
   return (
@@ -30,7 +32,7 @@ export function SelectUserRole({
           <div className="flex flex-wrap items-center justify-center gap-6">
             {/* Teacher Block */}
             <div
-              onClick={() => handleRoleSelection('teacher')}
+              onClick={() => handleRoleSelection('TEACHER')}
               className="flex flex-col items-center justify-center w-72 h-48 bg-white border-2 border-gray-200 rounded-lg shadow-md cursor-pointer transition-transform hover:scale-105 hover:border-blue-500 hover:shadow-lg"
             >
               <h2 className="text-xl font-medium text-gray-800">
@@ -43,7 +45,7 @@ export function SelectUserRole({
 
             {/* Student Block */}
             <div
-              onClick={() => handleRoleSelection('student')}
+              onClick={() => handleRoleSelection('STUDENT')}
               className="flex flex-col items-center justify-center w-72 h-48 bg-white border-2 border-gray-200 rounded-lg shadow-md cursor-pointer transition-transform hover:scale-105 hover:border-green-500 hover:shadow-lg"
             >
               <h2 className="text-xl font-medium text-gray-800">
