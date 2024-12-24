@@ -198,3 +198,37 @@
 {"level":"info","timestamp":"12-23-2024 19:46:33","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
 {"level":"info","timestamp":"12-23-2024 19:46:33","message":"Mapped route: [POST] /reset-password","data":{}}
 {"level":"info","timestamp":"12-23-2024 19:46:33","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:05:53","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:07:36","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:07:36","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:09:06","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:09:06","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:21:06","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:21:06","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:27:05","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:27:05","message":"Error in register method: Error: Email is already in use.","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"12-24-2024 09:36:10","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:36:41","message":"register user service error : Error: Email is already in use.","data":{}}
+{"level":"error","timestamp":"12-24-2024 09:36:41","message":"Error in register method: Error: Email is already in use.","data":{}}
