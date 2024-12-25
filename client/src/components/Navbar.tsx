@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { FloatingDock } from '@/components/ui/floating-dock';
 import {
@@ -77,7 +76,9 @@ export function Navbar() {
         mobileClassName="translate-y-0" // only for demo, remove for production
         items={links}
       />
-      <ModeToggle />
+      <div className="pr-10">
+        <ModeToggle />
+      </div>
     </div>
   );
 }
