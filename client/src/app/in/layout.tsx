@@ -8,7 +8,7 @@ export default function InLayout({
   return (
     <section>
       <Navbar />
-      <main className="pt-16">{children}</main>
+      <main className="">{children}</main>
     </section>
   );
 }
