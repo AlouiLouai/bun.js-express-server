@@ -23,7 +23,7 @@ export function IntroLandingPage() {
         </div>
       </BackgroundBeamsWithCollision>
       {/* Right: Image */}
-      <BackgroundLines className="p-5">
+      <BackgroundLines>
         <div className="flex-1 flex items-center justify-center h-full">
           <Image
             src="/landing-1.png" // Replace with your image path

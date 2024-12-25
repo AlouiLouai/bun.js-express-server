@@ -1,3 +1,4 @@
+import { FeaturesLandingPage } from '@/components/landingPage/features';
 import { IntroLandingPage } from '@/components/landingPage/intro';
 import Image from 'next/image';
 
@@ -7,7 +8,9 @@ export default function In() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         {/* Split Section */}
         <IntroLandingPage />
+        <FeaturesLandingPage />
       </main>
+      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start"></main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
