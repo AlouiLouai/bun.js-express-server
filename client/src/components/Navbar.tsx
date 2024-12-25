@@ -9,6 +9,7 @@ import {
   IconTerminal2,
 } from '@tabler/icons-react';
 import Image from 'next/image';
+import { ModeToggle } from './ModeToggle';
 
 export function Navbar() {
   const links = [
@@ -75,6 +76,7 @@ export function Navbar() {
         mobileClassName="translate-y-0" // only for demo, remove for production
         items={links}
       />
+      <ModeToggle />
     </div>
   );
 }
