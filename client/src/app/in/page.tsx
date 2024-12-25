@@ -1,5 +1,6 @@
 import { FeaturesLandingPage } from '@/components/landingPage/features';
 import { IntroLandingPage } from '@/components/landingPage/intro';
+import { TestimonialsLandingPage } from '@/components/landingPage/testimonies';
 import Image from 'next/image';
 
 export default function In() {
@@ -9,6 +10,7 @@ export default function In() {
         {/* Split Section */}
         <IntroLandingPage />
         <FeaturesLandingPage />
+        <TestimonialsLandingPage />
       </main>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start"></main>
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
