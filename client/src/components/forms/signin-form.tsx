@@ -44,7 +44,15 @@ export function SignInForm({
         title: 'Login Successful',
         description: `Welcome, ${user.email}!`,
       });
-      router.push('/in');
+      switch (user.role) {
+        case 'TEACHER':
+          router.push('/in/teacher')
+          break;
+        case 'STUDENT':
+          router.push('/in/student')
+        default:
+          break;
+      }
     } catch (error: unknown) {
       const errorMessage =
         (error instanceof Error && error.message) ||
