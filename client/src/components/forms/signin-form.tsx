@@ -46,10 +46,10 @@ export function SignInForm({
       });
       switch (user.role) {
         case 'TEACHER':
-          router.push('/in/teacher')
+          router.push('/in/teacher');
           break;
         case 'STUDENT':
-          router.push('/in/student')
+          router.push('/in/student');
         default:
           break;
       }

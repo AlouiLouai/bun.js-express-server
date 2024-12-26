@@ -15,8 +15,8 @@ export function ProductCard({ name, description, image }: ProductCardProps) {
         <Image
           src={image}
           alt={name}
-          width={300}
-          height={300}
+          width={200}
+          height={200}
           className="h-full w-full object-cover transition-all hover:scale-105"
         />
       </div>
