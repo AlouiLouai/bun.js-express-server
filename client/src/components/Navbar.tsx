@@ -43,6 +43,7 @@ export function Navbar() {
           width={20}
           height={20}
           alt="Aceternity Logo"
+          priority
         />
       ),
       href: '#',
