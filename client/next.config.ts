@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'assets.aceternity.com',
         port: '',
-        pathname: '/logo-dark.png',
+        pathname: '/**',
         search: '',
       },
     ],
