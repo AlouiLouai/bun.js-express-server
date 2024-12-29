@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { ProductCard } from '@/components/products/product-card';
+import AuthService from '@/services/auth.services';
 
 const products = [
   {
@@ -41,10 +42,32 @@ const products = [
   // },
 ];
 
+interface User {
+  id: number;
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  role: string;
+}
+
 export function AllProducts() {
   const [visibleProducts, setVisibleProducts] = useState(products);
   const [loading, setLoading] = useState(false);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
+
+  // const [users, setUsers] = useState<User[]>([]);
+
+  // useEffect(() => {
+  //   const fetchUsers = async () => {
+  //     const authService = new AuthService();
+  //     const response: any[] = await authService.users(); // Ensure response matches the User[] type
+  //     setUsers(response); // Now this works as expected
+  //   };
+  //   fetchUsers();
+  // }, []);
+
+  //console.log('USERS :', users);
 
   // Function to load more products
   const loadMoreProducts = () => {

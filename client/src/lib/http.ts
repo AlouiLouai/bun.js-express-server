@@ -14,6 +14,26 @@ class HttpClient {
     this.baseUrl = baseUrl;
   }
 
+  private getAuthToken(): string | null {
+    // Utility to get the value of a cookie by its name
+    const name = "access_token=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const cookieArr = decodedCookie.split(';');
+    
+    for (let i = 0; i < cookieArr.length; i++) {
+      let c = cookieArr[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return null; // Return null if the cookie is not found
+  }
+
+
+
   private buildUrl(
     endpoint: string,
     queryParams?: Record<string, string | number>
@@ -32,11 +52,13 @@ class HttpClient {
     options: HttpRequestOptions
   ): Promise<T> {
     const url = this.buildUrl(endpoint, options.queryParams);
+    const authToken = this.getAuthToken();
 
     const response = await fetch(url, {
       method: options.method,
       headers: {
         'Content-Type': 'application/json',
+        ...(authToken ? { 'Authorization': `Bearer ${authToken}` } : {}),
         ...(options.headers || {}),
       },
       body: options.body ? JSON.stringify(options.body) : undefined,

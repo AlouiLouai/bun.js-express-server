@@ -33,14 +33,15 @@ export default class AuthService {
   }
 
   public async login(userData: Partial<User>): Promise<LoginResponse> {
-    return this.httpClient.post<LoginResponse>(`/auth/login`, userData)
-    .then((response) => {
-      return {
-        user: response.user,
-        access_token: response.access_token,
-        refresh_token: response.refresh_token
-      }
-    });
+    return this.httpClient
+      .post<LoginResponse>(`/auth/login`, userData)
+      .then((response) => {
+        return {
+          user: response.user,
+          access_token: response.access_token,
+          refresh_token: response.refresh_token,
+        };
+      });
   }
 
   public async forgotPassword(userData: forgotPassword) {
@@ -54,5 +55,9 @@ export default class AuthService {
     return this.httpClient.post<User>(`/auth/reset-password?token=${token}`, {
       new_password: newPassword,
     });
+  }
+
+  public async users() {
+    return this.httpClient.get<User[]>(`/auth/users`);
   }
 }
