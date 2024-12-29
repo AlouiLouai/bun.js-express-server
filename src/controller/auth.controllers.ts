@@ -2,7 +2,7 @@ import type { Prisma, PrismaClient } from '@prisma/client';
 import type { Request, Response } from 'express';
 import Logger from '../common/Logger';
 import AuthService from '../service/auth.services';
-import { post } from '../common/decorators/http.decorators';
+import { get, post } from '../common/decorators/http.decorators';
 import { controller } from '../common/decorators/layer.decorators';
 
 @controller('/auth')
@@ -124,6 +124,23 @@ export default class AuthController {
       });
     } catch (error) {
       this.logger.error(`Error in reset password method: ${error}`);
+      // Send an error response with appropriate status and message
+      res.status(400).json({
+        message:
+          error instanceof Error ? error.message : 'Unknown error occurred',
+      });
+    }
+  }
+
+  @get('/users')
+  public async users(req: Request, res: Response): Promise<void> {
+    try {
+      const response = await this.authService.users();
+      res.status(200).json({
+        "users": response
+      })
+    } catch (error) {
+      this.logger.error(`Error in get users method: ${error}`);
       // Send an error response with appropriate status and message
       res.status(400).json({
         message:

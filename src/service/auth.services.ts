@@ -84,7 +84,7 @@ export default class AuthService {
         },
         this.config.jwt_secret, // Secret
         {
-          expiresIn: this.config.jwt_expiry, // Token expiry
+          expiresIn: "1h", // Token expiry
         }
       );
       // Generate refresh token (make expiry configurable in the config file)
@@ -247,6 +247,22 @@ export default class AuthService {
       // Log and rethrow the error
       if (error instanceof Error) {
         this.logger.error(`Error resetting password: ${error.message}`);
+        throw error;
+      } else {
+        this.logger.error('An unknown error occurred during reset password.');
+        throw new Error('Unknown error during reset password.');
+      }
+    }
+  }
+
+  public async users(): Promise<User[]> {
+    try {
+      const users = await this.prisma.user.findMany()
+      this.logger.info("getting users", users)
+      return users
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        this.logger.error(`Error getting users: ${error.message}`);
         throw error;
       } else {
         this.logger.error('An unknown error occurred during reset password.');

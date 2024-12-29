@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { FloatingDock } from '@/components/ui/floating-dock';
 import {
@@ -10,6 +11,7 @@ import {
 } from '@tabler/icons-react';
 import Image from 'next/image';
 import { ModeToggle } from './ModeToggle';
+import { Button } from './ui/button';
 
 export function Navbar() {
   const links = [
@@ -77,8 +79,19 @@ export function Navbar() {
         mobileClassName="translate-y-0" // only for demo, remove for production
         items={links}
       />
-      <div className="pr-10">
+      <div className="flex items-center gap-4 pr-10">
+        {/* ModeToggle */}
         <ModeToggle />
+
+        {/* Login Button */}
+        <Button
+          className="px-4 py-2 bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-200 rounded-md hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-all"
+          onClick={() => {
+            window.location.href = '/auth/sign-in'; // Update to your login page route
+          }}
+        >
+          Login
+        </Button>
       </div>
     </div>
   );

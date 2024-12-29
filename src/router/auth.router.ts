@@ -14,6 +14,12 @@ export default class AuthRouter {
     this.initializeRoutes();
   }
 
+  @route('get', '/users', true)
+  private async users(req: Request, res: Response): Promise<void> {
+    const authController = new AuthController(this.prisma);
+    await authController.users(req, res);
+  }
+
   @route('post', '/register')
   private async register(req: Request, res: Response): Promise<void> {
     const authController = new AuthController(this.prisma);

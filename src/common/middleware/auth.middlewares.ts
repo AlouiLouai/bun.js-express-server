@@ -23,14 +23,12 @@ export const authenticateMiddleware = (jwtSecret: string) => {
         });
         return;
       }
-
       // Extract the token
       const token = authHeader.split(' ')[1];
 
-      // Verify the token
-      const decoded = jwt.verify(token, jwtSecret);
+      jwt.decode(token);
 
-      // Attach decoded user information to the request object
+      const decoded = jwt.verify(token, jwtSecret);
       req.user = decoded;
 
       // Proceed to the next middleware or controller
@@ -39,6 +37,7 @@ export const authenticateMiddleware = (jwtSecret: string) => {
       if (error instanceof jwt.JsonWebTokenError) {
         res.status(401).json({
           message: 'Invalid access token.',
+          error: error.message
         });
         return;
       }

@@ -14,5 +14,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/in/:path*', '/'], // Match all routes under /in/
+  matcher: ['/in/:path*'], // Match all routes under /in/
 };
