@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchUsers } from './productActions';
+import { saveProductAction } from './productActions';
 import { ProductState } from '@/lib/types/product';
 
 const initialState: ProductState = {
@@ -8,32 +8,38 @@ const initialState: ProductState = {
   error: null,
 };
 
-export const UserSlice = createSlice({
-  name: 'user',
+export const ProductSlice = createSlice({
+  name: 'product',
   initialState,
   reducers: {
-    resetUsers: (state) => {
-      state.users = [];
+    // Optionally include synchronous reducers for local state management
+    resetProducts: (state) => {
+      state.products = [];
       state.error = null;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchUsers.pending, (state) => {
+      // Handle the pending state for `saveProductAction`
+      .addCase(saveProductAction.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchUsers.fulfilled, (state, action) => {
-        state.users = action.payload;
+      // Handle the fulfilled state for `saveProductAction`
+      .addCase(saveProductAction.fulfilled, (state, action) => {
+        state.products.push(action.payload); // Add the saved product to the list
         state.loading = false;
       })
-      .addCase(fetchUsers.rejected, (state, action) => {
-        state.error = action.error.message || 'Unknown error occurred';
+      // Handle the rejected state for `saveProductAction`
+      .addCase(saveProductAction.rejected, (state, action) => {
+        state.error = action.payload as string; // Use the custom error message from `rejectWithValue`
         state.loading = false;
       });
   },
 });
 
-export const { resetUsers } = UserSlice.actions;
+// Export synchronous reducer actions (if any)
+export const { resetProducts } = ProductSlice.actions;
 
-export default UserSlice.reducer;
+// Export the reducer
+export default ProductSlice.reducer;
