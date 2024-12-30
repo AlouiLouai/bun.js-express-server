@@ -1,16 +1,6 @@
+import { ApiUser, User } from '@/lib/types/users';
 import AuthService from '@/services/auth.services';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { User } from './userSlice';
-
-// Interface for API response (this is an example; adjust as needed)
-interface ApiUser {
-  id: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-  password?: string; // Optional, depending on your API response
-  role: string;
-}
 
 // Type for the error response
 type FetchUsersError = string | { message: string };

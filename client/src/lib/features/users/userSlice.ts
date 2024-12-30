@@ -1,20 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchUsers } from './userActions';
-
-export interface User {
-  id: string;
-  firstname: string;
-  lastname: string;
-  email: string;
-  password?: string;
-  role: string;
-}
-
-interface UserState {
-  users: User[];
-  loading: boolean;
-  error: string | null;
-}
+import { UserState } from '@/lib/types/users';
 
 const initialState: UserState = {
   users: [],
