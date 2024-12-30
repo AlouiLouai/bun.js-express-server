@@ -29,8 +29,7 @@ export default class ProductController {
       if (
         !productData.link ||
         !productData.price ||
-        !productData.title ||
-        !productData.user
+        !productData.title
       ) {
         throw new Error('link || price || title are required.');
       }
