@@ -6,4 +6,13 @@
 ## use the useAuth to complete the auth flow (DONE)=> now I need useUser to get the connected user infos
 ## work on login with google
 
-## redux slices 
+## redux slices (implementing prototype userSlice working well)
+
+
+### FEATURES :
+- teacher : 
+    - upload doc and save to the database the object saved
+    - display all documents for specific teacher
+- student : 
+    - display all documents + figureout search engine for better filter in categories and professors
+    - figure out stripe payement for documents
