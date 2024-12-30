@@ -136,9 +136,7 @@ export default class AuthController {
   public async users(req: Request, res: Response): Promise<void> {
     try {
       const response = await this.authService.users();
-      res.status(200).json({
-        "users": response
-      })
+      res.status(200).json(response)
     } catch (error) {
       this.logger.error(`Error in get users method: ${error}`);
       // Send an error response with appropriate status and message

@@ -4,10 +4,10 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
 
 interface User {
   id: string;
-  firtname: string;
+  firstname: string;
   lastname: string;
-  name: string;
   email: string;
+  password?: string;
   role: string;
 }
 

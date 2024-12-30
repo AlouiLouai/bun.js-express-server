@@ -1,34 +1,53 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchUsers } from './userActions';
 
-export const initialState = {
+export interface User {
+  id: string;
+  firstname: string;
+  lastname: string;
+  email: string;
+  password?: string;
+  role: string;
+}
+
+interface UserState {
+  users: User[];
+  loading: boolean;
+  error: string | null;
+}
+
+const initialState: UserState = {
   users: [],
   loading: false,
-  error: null,
-};
+  error: null
+}
 
 export const UserSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    // Directly setting users in the state
-    users: (state, action) => {
-      state.users = action.payload; // Directly set users from the action payload
-    },
-    // Reset users state
     resetUsers: (state) => {
-      state.users = []; // Clear the users state
+      state.users = [];
+      state.error = null;
     },
-    // Set loading state
-    loading: (state, action) => {
-      state.loading = action.payload; // Set loading to true/false based on the payload
-    },
-    // Set error state
-    error: (state, action) => {
-      state.error = action.payload; // Set error message in the state
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUsers.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchUsers.fulfilled, (state, action) => {
+        state.users = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchUsers.rejected, (state, action) => {
+        state.error = action.error.message || 'Unknown error occurred';;
+        state.loading = false;
+      });
   },
 });
 
-export const { users, resetUsers, loading, error } = UserSlice.actions;
+export const { resetUsers } = UserSlice.actions;
 
 export default UserSlice.reducer;
