@@ -21,6 +21,7 @@ model User {
   password  String
   role      Role    @default(STUDENT)
   Token     Token[]
+  products  Product[] @relation("UserProducts")
 }
 
 model Token {
@@ -36,8 +37,36 @@ model Token {
   @@index([userId, type])
 }
 
+model Product {
+  id          Int       @id @default(autoincrement())
+  link        String
+  logo        String?
+  description String?
+  price       Float
+  title       String
+  userId      Int
+  user        User      @relation("UserProducts", fields: [userId], references: [id], onDelete: Cascade)
+  category    Category?
+  class       SchoolYear?
+  createdAt   DateTime  @default(now())
+}
+
 enum Role {
   ADMIN
   STUDENT
   TEACHER
+}
+
+enum Category {
+  MATH
+  SCIENCE
+}
+
+enum SchoolYear {
+  FIRST
+  SECOND
+  THIRD
+  FOURTH
+  FIFTH
+  SIXTH
 }
