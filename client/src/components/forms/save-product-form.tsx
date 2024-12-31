@@ -1,5 +1,7 @@
 'use client';
 
+import { FormEvent } from 'react';
+
 enum Category {
   MATH = 'MATH',
   SCIENCE = 'SCIENCE',
@@ -22,15 +24,16 @@ interface FormSaveProductFieldsProps {
   title: string;
   userId?: number;
   category?: Category;
-  className?: SchoolYear; // ClassName is now an enum of SchoolYear
-  setLink: React.Dispatch<React.SetStateAction<string>>;
+  className?: SchoolYear;
+  setLink: (url: string) => void;
   setLogo: React.Dispatch<React.SetStateAction<string>>;
-  setDescription: React.Dispatch<React.SetStateAction<string>>;
+  setDescription: (url: string) => void;
   setPrice: React.Dispatch<React.SetStateAction<number>>;
-  setTitle: React.Dispatch<React.SetStateAction<string>>;
+  setTitle: (url: string) => void;
   setUserId?: React.Dispatch<React.SetStateAction<number>>;
-  setCategory?: React.Dispatch<React.SetStateAction<Category | undefined>>;
-  setClassName?: React.Dispatch<React.SetStateAction<SchoolYear | undefined>>;
+  setCategory?: (url: Category) => void;
+  setClassName?: (url: SchoolYear) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void; // Add the handleSubmit prop
 }
 
 export function FormSaveProductFields({
@@ -48,11 +51,15 @@ export function FormSaveProductFields({
   setTitle,
   setCategory,
   setClassName,
+  handleSubmit,
 }: FormSaveProductFieldsProps) {
   return (
-    <div className="space-y-4 mb-6">
+    <form onSubmit={handleSubmit} className="space-y-4 mb-6">
       <div>
-        <label htmlFor="title" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="title"
+          className="block text-sm font-medium text-gray-700"
+        >
           Title
         </label>
         <input
@@ -67,7 +74,10 @@ export function FormSaveProductFields({
       </div>
 
       <div>
-        <label htmlFor="description" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="description"
+          className="block text-sm font-medium text-gray-700"
+        >
           Description
         </label>
         <textarea
@@ -82,7 +92,10 @@ export function FormSaveProductFields({
       </div>
 
       <div>
-        <label htmlFor="price" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="price"
+          className="block text-sm font-medium text-gray-700"
+        >
           Price
         </label>
         <input
@@ -97,13 +110,18 @@ export function FormSaveProductFields({
       </div>
 
       <div>
-        <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="category"
+          className="block text-sm font-medium text-gray-700"
+        >
           Category
         </label>
         <select
           id="category"
-          value={category || ''}
-          onChange={(e) => setCategory && setCategory(e.target.value as Category)}
+          value={category || ''} // Set a fallback value for category
+          onChange={(e) =>
+            setCategory && setCategory(e.target.value as Category)
+          }
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
         >
           <option value="">Select category</option>
@@ -113,16 +131,24 @@ export function FormSaveProductFields({
             </option>
           ))}
         </select>
+        {category && (
+          <p className="mt-2 text-sm text-gray-600">Selected Category: {category}</p>
+        )}
       </div>
 
       <div>
-        <label htmlFor="className" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="className"
+          className="block text-sm font-medium text-gray-700"
+        >
           Class Year
         </label>
         <select
           id="className"
-          value={className || ''}
-          onChange={(e) => setClassName && setClassName(e.target.value as SchoolYear)}
+          value={className || SchoolYear.FIRST} // Set a fallback value for className
+          onChange={(e) =>
+            setClassName && setClassName(e.target.value as SchoolYear)
+          }
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
         >
           <option value="">Select class year</option>
@@ -132,10 +158,16 @@ export function FormSaveProductFields({
             </option>
           ))}
         </select>
+        {className && (
+          <p className="mt-2 text-sm text-gray-600">Selected Class Year: {className}</p>
+        )}
       </div>
 
       <div>
-        <label htmlFor="link" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="link"
+          className="block text-sm font-medium text-gray-700"
+        >
           Link
         </label>
         <input
@@ -150,7 +182,10 @@ export function FormSaveProductFields({
       </div>
 
       <div>
-        <label htmlFor="logo" className="block text-sm font-medium text-gray-700">
+        <label
+          htmlFor="logo"
+          className="block text-sm font-medium text-gray-700"
+        >
           Logo
         </label>
         <input
@@ -163,7 +198,14 @@ export function FormSaveProductFields({
           placeholder="Enter product logo URL"
         />
       </div>
-    </div>
+
+      <button
+        type="submit"
+        className="w-full px-4 py-2 bg-green-600 text-white rounded-md"
+      >
+        Save Product
+      </button>
+    </form>
   );
 }
 

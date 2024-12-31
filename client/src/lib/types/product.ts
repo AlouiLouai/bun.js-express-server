@@ -16,3 +16,4 @@ export interface ProductState {
   loading: boolean;
   error: string | null;
 }
+
