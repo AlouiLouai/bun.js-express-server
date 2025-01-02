@@ -1,7 +1,7 @@
 'use client';
 import { toast } from '@/hooks/use-toast';
 import { FormEvent, useState } from 'react';
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../../ProgressBar';
 
 interface FormDocumentUploadFieldProps {
     file: File | null;

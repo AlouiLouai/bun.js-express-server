@@ -2,7 +2,7 @@
 import { useState, FormEvent } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { upload } from '@vercel/blob/client';
-import { FormSaveProductFields } from './forms/save-product-form';
+import { FormSaveProductFields } from './forms/product/save-product-form';
 import FileUploader from './uploads/FileUploader';
 import ProgressBar from './ProgressBar';
 import { cn } from '@/lib/utils';
