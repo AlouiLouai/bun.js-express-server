@@ -45,15 +45,15 @@ const MapI = dynamic(() => import('lucide-react').then((mod) => mod.Map), {
 // This is sample data.
 const data: SidebarData = {
   user: {
-    name: 'shadcn',
+    name: 'Louai',
     email: 'm@example.com',
     avatar: '/avatars/shadcn.jpg',
   },
   teams: [
     {
-      name: 'Acme Inc',
+      name: 'EduForm',
       logo: GalleryVerticalEndI,
-      plan: 'Enterprise',
+      plan: 'Plateform',
     },
     {
       name: 'Acme Corp.',
@@ -68,21 +68,21 @@ const data: SidebarData = {
   ],
   navMain: [
     {
-      title: 'Playground',
+      title: 'Documents',
       url: '#',
       icon: SquareTerminalI,
       isActive: true,
       items: [
         {
-          title: 'History',
+          title: 'Add new Document',
           url: '#',
         },
         {
-          title: 'Starred',
+          title: 'Documents List',
           url: '#',
         },
         {
-          title: 'Settings',
+          title: 'Pricing',
           url: '#',
         },
       ],

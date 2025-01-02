@@ -6,21 +6,23 @@ import ProductService from '@/services/product.services';
 type SaveProductError = string | { message: string };
 
 // Thunk action for saving a product
-export const saveProductAction = createAsyncThunk<Product, Partial<Product>, { rejectValue: SaveProductError }>(
-  'product/saveProduct',
-  async (productData, { rejectWithValue }) => {
-    try {
-      const productService = new ProductService();
-      const response = await productService.saveProduct(productData);
-      return response; // Directly return the Product object
-    } catch (error: unknown) {
-      console.error('Error in saveProductAction:', error);
+export const saveProductAction = createAsyncThunk<
+  Product,
+  Partial<Product>,
+  { rejectValue: SaveProductError }
+>('product/saveProduct', async (productData, { rejectWithValue }) => {
+  try {
+    const productService = new ProductService();
+    const data = { ...productData, userId: 18 };
+    const response = await productService.saveProduct(data);
+    return response; // Directly return the Product object
+  } catch (error: unknown) {
+    console.error('Error in saveProductAction:', error);
 
-      // Type-safe error handling
-      if (error instanceof Error) {
-        return rejectWithValue(error.message || 'An unknown error occurred');
-      }
-      return rejectWithValue('An unknown error occurred');
+    // Type-safe error handling
+    if (error instanceof Error) {
+      return rejectWithValue(error.message || 'An unknown error occurred');
     }
+    return rejectWithValue('An unknown error occurred');
   }
-);
+});
