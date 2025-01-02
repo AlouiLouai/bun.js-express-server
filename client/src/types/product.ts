@@ -1,17 +1,18 @@
 export interface Product {
   id: string;
   link: string;
-  logo?: string;
-  description?: string;
+  description: string;
   price: number;
   title: string;
   userId: number;
-  category?: string;
-  class?: string;
+  category?: Category;
+  niveau?: Level;
   createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface ProductState {
+  product: Product;
   products: Product[];
   loading: boolean;
   error: string | null;
@@ -22,7 +23,7 @@ export enum Category {
   SCIENCE = 'SCIENCE',
 }
 
-export enum SchoolYear {
+export enum Level {
   FIRST = 'FIRST',
   SECOND = 'SECOND',
   THIRD = 'THIRD',
@@ -30,4 +31,3 @@ export enum SchoolYear {
   FIFTH = 'FIFTH',
   SIXTH = 'SIXTH',
 }
-

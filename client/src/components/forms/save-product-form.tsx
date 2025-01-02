@@ -1,19 +1,17 @@
 'use client';
 
-import { Category, SchoolYear } from '@/types/product';
+import { Category, Level } from '@/types/product';
 import { FormEvent } from 'react';
-
 
 interface FormSaveProductFieldsProps {
   product: {
     link: string;
-    logo: string;
     description: string;
     price: number;
     title: string;
     userId?: number;
     category?: Category;
-    class?: SchoolYear;
+    niveau?: Level;
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   updateField: (field: string, value: any) => void;
@@ -27,24 +25,46 @@ export function FormSaveProductFields({
 }: FormSaveProductFieldsProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4 mb-6">
-      <div>
-        <label
-          htmlFor="title"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Title
-        </label>
-        <input
-          type="text"
-          id="title"
-          value={product.title}
-          onChange={(e) => updateField('title', e.target.value)}
-          required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
-          placeholder="Enter product title"
-        />
+      {/* Title and Price in the same row */}
+      <div className="flex space-x-4">
+        <div className="flex-1">
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Title
+          </label>
+          <input
+            type="text"
+            id="title"
+            value={product.title}
+            onChange={(e) => updateField('title', e.target.value)}
+            required
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+            placeholder="Enter product title"
+          />
+        </div>
+
+        <div className="flex-1">
+          <label
+            htmlFor="price"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Price
+          </label>
+          <input
+            type="number"
+            id="price"
+            value={product.price}
+            onChange={(e) => updateField('price', Number(e.target.value))}
+            required
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+            placeholder="Enter product price"
+          />
+        </div>
       </div>
 
+      {/* Description in a separate row */}
       <div>
         <label
           htmlFor="description"
@@ -63,70 +83,54 @@ export function FormSaveProductFields({
         />
       </div>
 
-      <div>
-        <label
-          htmlFor="price"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Price
-        </label>
-        <input
-          type="number"
-          id="price"
-          value={product.price}
-          onChange={(e) => updateField('price', Number(e.target.value))}
-          required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
-          placeholder="Enter product price"
-        />
+      {/* Category and Class in the same row */}
+      <div className="flex space-x-4">
+        <div className="flex-1">
+          <label
+            htmlFor="category"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Category
+          </label>
+          <select
+            id="category"
+            value={product.category || ''}
+            onChange={(e) => updateField('category', e.target.value)}
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+          >
+            <option value="">Select category</option>
+            {Object.values(Category).map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex-1">
+          <label
+            htmlFor="className"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Class Year
+          </label>
+          <select
+            id="className"
+            value={product.niveau || ''}
+            onChange={(e) => updateField('niveau', e.target.value)}
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
+          >
+            <option value="">Select class year</option>
+            {Object.values(Level).map((year) => (
+              <option key={year} value={year}>
+                {year}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
 
-      <div>
-        <label
-          htmlFor="category"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Category
-        </label>
-        <select
-          id="category"
-          value={product.category || ''}
-          onChange={(e) => updateField('category', e.target.value as Category)}
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
-        >
-          <option value="">Select category</option>
-          {Object.values(Category).map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div>
-        <label
-          htmlFor="className"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Class Year
-        </label>
-        <select
-          id="className"
-          value={product.class || ''}
-          onChange={(e) =>
-            updateField('class', e.target.value as SchoolYear)
-          }
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
-        >
-          <option value="">Select class year</option>
-          {Object.values(SchoolYear).map((year) => (
-            <option key={year} value={year}>
-              {year}
-            </option>
-          ))}
-        </select>
-      </div>
-
+      {/* Link in a separate row */}
       <div>
         <label
           htmlFor="link"
@@ -144,25 +148,6 @@ export function FormSaveProductFields({
           placeholder="Enter product link"
         />
       </div>
-
-      <div>
-        <label
-          htmlFor="logo"
-          className="block text-sm font-medium text-gray-700"
-        >
-          Logo
-        </label>
-        <input
-          type="text"
-          id="logo"
-          value={product.logo}
-          onChange={(e) => updateField('logo', e.target.value)}
-          required
-          className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
-          placeholder="Enter product logo URL"
-        />
-      </div>
-
       <button
         type="submit"
         className="w-full px-4 py-2 bg-green-600 text-white rounded-md"

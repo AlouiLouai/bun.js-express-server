@@ -1288,3 +1288,18 @@
 {"level":"info","timestamp":"01-02-2025 17:04:05","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
 {"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /reset-password","data":{}}
 {"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 20:34:59","message":"Mapped route: [POST] /save","data":{}}

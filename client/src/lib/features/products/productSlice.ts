@@ -1,8 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { saveProductAction } from './productActions';
-import { ProductState } from '@/types/product';
+import { Category, Level, ProductState } from '@/types/product';
 
 const initialState: ProductState = {
+  product: {
+    id: '',
+    link: '',
+    price: 0,
+    title: '',
+    userId: 0,
+    category: Category.MATH,
+    createdAt: '',
+    description: '',
+    niveau: Level.FOURTH,
+    updatedAt: '',
+  },
   products: [],
   loading: false,
   error: null,
@@ -16,6 +28,10 @@ export const ProductSlice = createSlice({
     resetProducts: (state) => {
       state.products = [];
       state.error = null;
+    },
+    // Set or update the product
+    setProduct: (state, action) => {
+      state.product = { ...state.product, ...action.payload };
     },
   },
   extraReducers: (builder) => {
@@ -39,7 +55,7 @@ export const ProductSlice = createSlice({
 });
 
 // Export synchronous reducer actions (if any)
-export const { resetProducts } = ProductSlice.actions;
+export const { resetProducts, setProduct } = ProductSlice.actions;
 
 // Export the reducer
 export default ProductSlice.reducer;

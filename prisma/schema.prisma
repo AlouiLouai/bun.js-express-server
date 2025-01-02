@@ -14,12 +14,12 @@ datasource db {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   firstname String?
   lastname  String?
-  email     String  @unique
+  email     String    @unique
   password  String
-  role      Role    @default(STUDENT)
+  role      Role      @default(STUDENT)
   Token     Token[]
   products  Product[] @relation("UserProducts")
 }
@@ -40,15 +40,15 @@ model Token {
 model Product {
   id          Int       @id @default(autoincrement())
   link        String
-  logo        String?
   description String?
   price       Float
   title       String
   userId      Int
   user        User      @relation("UserProducts", fields: [userId], references: [id], onDelete: Cascade)
   category    Category?
-  class       SchoolYear?
+  niveau      Niveau?
   createdAt   DateTime  @default(now())
+  updatedAt   DateTime?
 }
 
 enum Role {
@@ -62,7 +62,7 @@ enum Category {
   SCIENCE
 }
 
-enum SchoolYear {
+enum Niveau {
   FIRST
   SECOND
   THIRD

@@ -4,26 +4,18 @@ import { useState, FormEvent, useEffect } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { upload } from '@vercel/blob/client';
 import FormSaveProductFields from './forms/save-product-form';
-import { Category, SchoolYear } from '@/types/product';
 import { DocumentUploadForm } from './forms/document-upload-form';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { RootState } from '@/lib/store';
 import { saveProductAction } from '@/lib/features/products/productActions';
+import { setProduct } from '@/lib/features/products/productSlice';
 
 export default function MultiStepForm() {
   const dispatch = useAppDispatch();
-  const { loading, error } = useAppSelector(
+  const { product, loading, error } = useAppSelector(
     (state: RootState) => state.product
   );
   const [step, setStep] = useState(1);
-  const [product, setProduct] = useState({
-    link: '',
-    title: '',
-    description: '',
-    price: 0,
-    category: Category.MATH,
-    class: SchoolYear.FIRST,
-  });
 
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
@@ -59,9 +51,7 @@ export default function MultiStepForm() {
             setProgress(progressEvent.percentage),
         });
 
-        console.log('blob ', blob);
-
-        setProduct((prev) => ({ ...prev, link: blob.url }));
+        setProduct({ link: blob.url });
         toast({
           title: 'Success!',
           description: 'File uploaded successfully!',
@@ -84,7 +74,6 @@ export default function MultiStepForm() {
   async function handleProductSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
-      console.log('product :', product);
       await dispatch(saveProductAction(product)).unwrap(); // Dispatch save action
       toast({
         title: 'Product Created!',
@@ -119,16 +108,13 @@ export default function MultiStepForm() {
           product={{
             ...product,
             link: product.link,
-            logo: 'aaaa',
-            class: product.class,
+            niveau: product.niveau,
             category: product.category,
             description: product.description,
             price: Number(product.price),
             title: product.title,
           }}
-          updateField={(field, value) =>
-            setProduct((prev) => ({ ...prev, [field]: value }))
-          }
+          updateField={(field, value) => setProduct({ [field]: value })}
           handleSubmit={handleProductSubmit}
         />
       )}
