@@ -3,9 +3,9 @@
 import { useState, FormEvent, useEffect } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { upload } from '@vercel/blob/client';
-import ProgressBar from './ProgressBar';
 import FormSaveProductFields from './forms/save-product-form';
 import { Category, SchoolYear } from '@/types/product';
+import { DocumentUploadForm } from './forms/document-upload-form';
 
 export default function MultiStepForm() {
   const [step, setStep] = useState(1);
@@ -52,6 +52,8 @@ export default function MultiStepForm() {
             setProgress(progressEvent.percentage),
         });
 
+        console.log('blob ', blob);
+
         setProduct((prev) => ({ ...prev, blobUrl: blob.url }));
         toast({
           title: 'Success!',
@@ -83,42 +85,17 @@ export default function MultiStepForm() {
   }
 
   return (
-    <div className="space-y-6">
+    <div>
       {step === 1 && (
-        <form onSubmit={handleFileUpload}>
-          <div className="space-y-4">
-            <h2 className="text-xl font-semibold">Step 1: Upload a File</h2>
-            <label
-              htmlFor="file-upload"
-              className="group flex flex-col items-center justify-center border-dashed border-2 rounded-md py-6 cursor-pointer"
-            >
-              <input
-                id="file-upload"
-                type="file"
-                className="hidden"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) {
-                    setFile(file);
-                    setPreview(URL.createObjectURL(file));
-                  }
-                }}
-              />
-              <p className="text-gray-600">Click or drag a file to upload.</p>
-              {preview && (
-                <p className="text-sm text-gray-500 mt-2">{file?.name}</p>
-              )}
-            </label>
-            {isUploading && <ProgressBar value={progress} />}
-          </div>
-          <button
-            type="submit"
-            disabled={isUploading || !file}
-            className="w-full px-4 py-2 bg-blue-600 text-white rounded-md"
-          >
-            Upload and Continue
-          </button>
-        </form>
+        <DocumentUploadForm
+          file={file}
+          setFile={setFile}
+          preview={preview}
+          setPreview={setPreview}
+          handleFileUpload={handleFileUpload}
+          isUploading={isUploading}
+          progress={progress}
+        />
       )}
 
       {step === 2 && (
