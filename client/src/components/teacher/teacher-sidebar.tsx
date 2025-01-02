@@ -3,7 +3,7 @@ import { AppSidebar } from '../sidebars/app-sidebar';
 // Dynamically import icons to avoid SSR issues
 import dynamic from 'next/dynamic';
 import { SidebarData } from '@/types/sidebar';
-import useUser from '@/hooks/use-User';
+import useUser from '@/hooks/use-user';
 // Dynamically load icons
 const SquareTerminalI = dynamic(
   () => import('lucide-react').then((mod) => mod.SquareTerminal),
