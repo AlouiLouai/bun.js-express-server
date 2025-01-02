@@ -12,6 +12,7 @@ import Logger from './common/Logger';
 import AuthRouter from './router/auth.router';
 import { corsConfig } from './common/config/CorsConfig';
 import ProductRouter from './router/product.route';
+import UserRouter from './router/user.router';
 const app: Express = express();
 const config = Config.getInstance();
 const logger = Logger.getInstance();
@@ -24,8 +25,10 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded requests
 // Initialize and use the AuthRouter
 const authRouter = new AuthRouter(prisma);
 const productRouter = new ProductRouter(prisma)
+const userRouter = new UserRouter(prisma);
 app.use('/auth', authRouter.router); // Mount the AuthRouter on the '/auth' route
 app.use('/product', productRouter.router); // Mount the ProductRouter on the '/product' route
+app.use('/user', userRouter.router); // Mount the UserRouter on the '/user' route
 
 // Define a basic route
 app.get(
