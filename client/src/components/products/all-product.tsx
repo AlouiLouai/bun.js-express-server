@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { RootState } from '@/lib/store';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { fetchUsers } from '@/lib/features/users/userActions';
-import { User } from '@/lib/types/users';
+import { User } from '@/types/users';
 
 export function AllProducts() {
   const dispatch = useAppDispatch();

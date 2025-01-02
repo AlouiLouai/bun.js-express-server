@@ -1,4 +1,4 @@
-import { ApiUser, User } from '@/lib/types/users';
+import { ApiUser, User } from '@/types/users';
 import AuthService from '@/services/auth.services';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
