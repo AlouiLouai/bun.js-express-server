@@ -1,16 +1,13 @@
 export interface User {
-  id: string;
   firstname: string;
   lastname: string;
   email: string;
-  password?: string;
   role: string;
+  avatar?: string;
 }
 
 export interface UserState {
-  users: User[];
-  loading: boolean;
-  error: string | null;
+  user: User | null;
 }
 
 export interface ApiUser {

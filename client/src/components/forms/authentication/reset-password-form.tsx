@@ -11,7 +11,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useRouter } from 'next/navigation';
-import useAuth from '@/hooks/use.auth';
+import useAuth from '@/hooks/use-auth';
 import { useEffect, useState } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { useSearchParams } from 'next/navigation';
