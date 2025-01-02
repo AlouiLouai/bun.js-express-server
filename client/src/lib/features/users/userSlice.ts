@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchUsers } from './userActions';
-import { UserState } from '@/lib/types/users';
+import { UserState } from '@/types/users';
 
 const initialState: UserState = {
   users: [],

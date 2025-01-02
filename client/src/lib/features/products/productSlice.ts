@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { saveProductAction } from './productActions';
-import { ProductState } from '@/lib/types/product';
+import { ProductState } from '@/types/product';
 
 const initialState: ProductState = {
   products: [],

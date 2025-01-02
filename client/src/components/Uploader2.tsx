@@ -1,24 +1,11 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useEffect } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { upload } from '@vercel/blob/client';
 import ProgressBar from './ProgressBar';
 import FormSaveProductFields from './forms/save-product-form';
-
-enum Category {
-  MATH = 'MATH',
-  SCIENCE = 'SCIENCE',
-}
-
-enum SchoolYear {
-  FIRST = 'FIRST',
-  SECOND = 'SECOND',
-  THIRD = 'THIRD',
-  FOURTH = 'FOURTH',
-  FIFTH = 'FIFTH',
-  SIXTH = 'SIXTH',
-}
+import { Category, SchoolYear } from '@/types/product';
 
 export default function MultiStepForm() {
   const [step, setStep] = useState(1);
@@ -26,7 +13,7 @@ export default function MultiStepForm() {
     blobUrl: '',
     title: '',
     description: '',
-    price: '',
+    price: 0,
     category: Category.MATH,
     className: SchoolYear.FIRST,
   });
@@ -44,9 +31,16 @@ export default function MultiStepForm() {
     setPreview(null);
   }
 
+  useEffect(() => {
+    return () => {
+      if (preview) URL.revokeObjectURL(preview);
+    };
+  }, [preview]);
+
   // Handle File Upload
   async function handleFileUpload(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (!file) return;
     setIsUploading(true);
 
     if (file) {
@@ -129,29 +123,16 @@ export default function MultiStepForm() {
 
       {step === 2 && (
         <FormSaveProductFields
-          link={product.blobUrl}
-          logo="aaaa"
-          description={product.description}
-          price={Number(product.price)}
-          title={product.title}
-          setLink={(url: string) =>
-            setProduct((prev) => ({ ...prev, blobUrl: url }))
-          }
-          setLogo={(logo) => console.log('Logo setter logic', logo)}
-          setDescription={(description: string) =>
-            setProduct((prev) => ({ ...prev, description }))
-          }
-          setPrice={(price) =>
-            setProduct({ ...product, price: price.toString() })
-          }
-          setTitle={(title: string) =>
-            setProduct((prev) => ({ ...prev, title }))
-          }
-          setCategory={(category) =>
-            setProduct({ ...product, category: category as Category })
-          }
-          setClassName={(className) =>
-            setProduct({ ...product, className: className as SchoolYear })
+          product={{
+            ...product,
+            link: product.blobUrl,
+            logo: 'aaaa',
+            description: product.description,
+            price: Number(product.price),
+            title: product.title,
+          }}
+          updateField={(field, value) =>
+            setProduct((prev) => ({ ...prev, [field]: value }))
           }
           handleSubmit={handleProductSubmit}
         />

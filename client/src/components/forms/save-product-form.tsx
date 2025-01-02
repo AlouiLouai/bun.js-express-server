@@ -1,56 +1,28 @@
 'use client';
 
+import { Category, SchoolYear } from '@/types/product';
 import { FormEvent } from 'react';
 
-enum Category {
-  MATH = 'MATH',
-  SCIENCE = 'SCIENCE',
-}
-
-enum SchoolYear {
-  FIRST = 'FIRST',
-  SECOND = 'SECOND',
-  THIRD = 'THIRD',
-  FOURTH = 'FOURTH',
-  FIFTH = 'FIFTH',
-  SIXTH = 'SIXTH',
-}
 
 interface FormSaveProductFieldsProps {
-  link: string;
-  logo: string;
-  description: string;
-  price: number;
-  title: string;
-  userId?: number;
-  category?: Category;
-  className?: SchoolYear;
-  setLink: (url: string) => void;
-  setLogo: React.Dispatch<React.SetStateAction<string>>;
-  setDescription: (url: string) => void;
-  setPrice: React.Dispatch<React.SetStateAction<number>>;
-  setTitle: (url: string) => void;
-  setUserId?: React.Dispatch<React.SetStateAction<number>>;
-  setCategory?: (url: Category) => void;
-  setClassName?: (url: SchoolYear) => void;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void; // Add the handleSubmit prop
+  product: {
+    link: string;
+    logo: string;
+    description: string;
+    price: number;
+    title: string;
+    userId?: number;
+    category?: Category;
+    className?: SchoolYear;
+  };
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  updateField: (field: string, value: any) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
 export function FormSaveProductFields({
-  link,
-  logo,
-  description,
-  price,
-  title,
-  category,
-  className,
-  setLink,
-  setLogo,
-  setDescription,
-  setPrice,
-  setTitle,
-  setCategory,
-  setClassName,
+  product,
+  updateField,
   handleSubmit,
 }: FormSaveProductFieldsProps) {
   return (
@@ -65,8 +37,8 @@ export function FormSaveProductFields({
         <input
           type="text"
           id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={product.title}
+          onChange={(e) => updateField('title', e.target.value)}
           required
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
           placeholder="Enter product title"
@@ -82,8 +54,8 @@ export function FormSaveProductFields({
         </label>
         <textarea
           id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={product.description}
+          onChange={(e) => updateField('description', e.target.value)}
           required
           rows={3}
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
@@ -101,8 +73,8 @@ export function FormSaveProductFields({
         <input
           type="number"
           id="price"
-          value={price}
-          onChange={(e) => setPrice(Number(e.target.value))}
+          value={product.price}
+          onChange={(e) => updateField('price', Number(e.target.value))}
           required
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
           placeholder="Enter product price"
@@ -118,10 +90,8 @@ export function FormSaveProductFields({
         </label>
         <select
           id="category"
-          value={category || ''} // Set a fallback value for category
-          onChange={(e) =>
-            setCategory && setCategory(e.target.value as Category)
-          }
+          value={product.category || ''}
+          onChange={(e) => updateField('category', e.target.value as Category)}
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
         >
           <option value="">Select category</option>
@@ -131,9 +101,6 @@ export function FormSaveProductFields({
             </option>
           ))}
         </select>
-        {category && (
-          <p className="mt-2 text-sm text-gray-600">Selected Category: {category}</p>
-        )}
       </div>
 
       <div>
@@ -145,9 +112,9 @@ export function FormSaveProductFields({
         </label>
         <select
           id="className"
-          value={className || SchoolYear.FIRST} // Set a fallback value for className
+          value={product.className || ''}
           onChange={(e) =>
-            setClassName && setClassName(e.target.value as SchoolYear)
+            updateField('className', e.target.value as SchoolYear)
           }
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
         >
@@ -158,9 +125,6 @@ export function FormSaveProductFields({
             </option>
           ))}
         </select>
-        {className && (
-          <p className="mt-2 text-sm text-gray-600">Selected Class Year: {className}</p>
-        )}
       </div>
 
       <div>
@@ -173,8 +137,8 @@ export function FormSaveProductFields({
         <input
           type="url"
           id="link"
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
+          value={product.link}
+          onChange={(e) => updateField('link', e.target.value)}
           required
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
           placeholder="Enter product link"
@@ -191,8 +155,8 @@ export function FormSaveProductFields({
         <input
           type="text"
           id="logo"
-          value={logo}
-          onChange={(e) => setLogo(e.target.value)}
+          value={product.logo}
+          onChange={(e) => updateField('logo', e.target.value)}
           required
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
           placeholder="Enter product logo URL"
