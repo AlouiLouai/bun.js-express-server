@@ -45,6 +45,21 @@ const useAuth = () => {
     }
   };
 
+  const logout = async () => {
+    try {
+      const authService = new AuthService();
+      const response = await authService.logout();
+      return response; // Success
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        setError(error.message || 'An error occurred');
+      }
+      throw error; // Re-throw to handle it in the component if needed
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const forgotPassword = async (userData: { email: string }) => {
     setLoading(true);
     setError(null);
@@ -85,7 +100,15 @@ const useAuth = () => {
     }
   };
 
-  return { register, login, forgotPassword, resetPassword, loading, error };
+  return {
+    register,
+    login,
+    logout,
+    forgotPassword,
+    resetPassword,
+    loading,
+    error,
+  };
 };
 
 export default useAuth;

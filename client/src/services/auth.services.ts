@@ -44,6 +44,10 @@ export default class AuthService {
       });
   }
 
+  public async logout(): Promise<void> {
+    return this.httpClient.post(`/auth/logout`, undefined); // Pass undefined as body
+  }
+
   public async forgotPassword(userData: forgotPassword) {
     return this.httpClient.post<User>(`/auth/forgot-password`, userData);
   }

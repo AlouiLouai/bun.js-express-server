@@ -21,3 +21,15 @@ export function post(path: string): MethodDecorator {
     Reflect.defineMetadata('routes', routes, target.constructor);
   };
 }
+
+/**
+ * Maps an HTTP PUT method to a route.
+ * @param path - The route path.
+ */
+export function put(path: string): MethodDecorator {
+  return (target, propertykey, descriptor) => {
+    const routes = Reflect.getMetadata('routes', target.constructor) || [];
+    routes.push({ method: 'put', path, handler: descriptor.value });
+    Reflect.defineMetadata('routes', routes, target.constructor);
+  };
+}

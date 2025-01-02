@@ -12,15 +12,19 @@ import cookie from 'js-cookie';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useRouter } from 'next/navigation';
-import useAuth from '@/hooks/use.auth';
+import useAuth from '@/hooks/use-auth';
 import { useState } from 'react';
 import { toast } from '@/hooks/use-toast';
+import { useAppDispatch } from '@/lib/hooks';
+import { setUser } from '@/lib/features/profile/profileSlice';
 
 export function SignInForm({
   className,
   ...props
 }: React.ComponentPropsWithoutRef<'div'>) {
   const router = useRouter();
+  const dispatch = useAppDispatch();
+
   const { login, loading, error } = useAuth();
   const [formData, setFormData] = useState({
     email: '',
@@ -38,6 +42,8 @@ export function SignInForm({
       const { user, access_token } = await login(formData);
       // setting the cookie
       cookie.set('access_token', access_token, { expires: 1 });
+      console.log('User from Redux:', user);
+      dispatch(setUser(user));
       // Show success toast
       toast({
         variant: 'default',
