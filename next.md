@@ -9,7 +9,6 @@
 
 ### FEATURES :
 - teacher : 
-    - upload doc and save to the database the object saved
     - display all documents for specific teacher
 - student : 
     - display all documents + figureout search engine for better filter in categories and professors
