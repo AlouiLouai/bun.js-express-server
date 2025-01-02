@@ -3,14 +3,14 @@
 import { useState, FormEvent, useEffect } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { upload } from '@vercel/blob/client';
-import FormSaveProductFields from './forms/save-product-form';
-import { DocumentUploadForm } from './forms/document-upload-form';
+import FormSaveProductFields from './save-product-form';
+import { DocumentUploadForm } from './document-upload-form';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { RootState } from '@/lib/store';
 import { saveProductAction } from '@/lib/features/products/productActions';
 import { setProduct } from '@/lib/features/products/productSlice';
 
-export default function MultiStepForm() {
+export default function MultiStepFormCreateDocument() {
   const dispatch = useAppDispatch();
   const { product, loading, error } = useAppSelector(
     (state: RootState) => state.product
@@ -51,7 +51,7 @@ export default function MultiStepForm() {
             setProgress(progressEvent.percentage),
         });
 
-        setProduct({ link: blob.url });
+        dispatch(setProduct({ ['link']: blob.url }));
         toast({
           title: 'Success!',
           description: 'File uploaded successfully!',
@@ -114,12 +114,14 @@ export default function MultiStepForm() {
             price: Number(product.price),
             title: product.title,
           }}
-          updateField={(field, value) => setProduct({ [field]: value })}
+          updateField={(field, value) =>
+            dispatch(setProduct({ [field]: value }))
+          }
           handleSubmit={handleProductSubmit}
         />
       )}
 
-      <div className="flex justify-between mt-6">
+      <div className="flex justify-center mt-6">
         {step > 1 && (
           <button
             onClick={() => setStep((prev) => prev - 1)}
@@ -131,7 +133,7 @@ export default function MultiStepForm() {
         {step < 2 && (
           <button
             onClick={() => setStep((prev) => prev + 1)}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md"
+            className="px-4 py-2 bg-gray-500 text-white rounded-md"
           >
             Next
           </button>

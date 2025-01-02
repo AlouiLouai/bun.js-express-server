@@ -140,7 +140,7 @@ export function DocumentUploadForm({
       </label>
       <button
         type="submit"
-        className="px-4 py-2 bg-blue-600 text-white rounded-md"
+        className="px-4 py-2 bg-gray-600 text-white rounded-md"
       >
         Upload and continue
       </button>

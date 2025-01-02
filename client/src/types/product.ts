@@ -1,5 +1,4 @@
 export interface Product {
-  id: string;
   link: string;
   description: string;
   price: number;
@@ -7,8 +6,6 @@ export interface Product {
   userId: number;
   category?: Category;
   niveau?: Level;
-  createdAt?: string;
-  updatedAt?: string;
 }
 
 export interface ProductState {

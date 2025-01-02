@@ -1303,3 +1303,7 @@
 {"level":"info","timestamp":"01-02-2025 20:34:59","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
 {"level":"info","timestamp":"01-02-2025 20:34:59","message":"Mapped route: [POST] /reset-password","data":{}}
 {"level":"info","timestamp":"01-02-2025 20:34:59","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-02-2025 21:09:15","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 21:09:15","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 21:09:15","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 21:09:15","message":"Initializing configuration...","data":{}}

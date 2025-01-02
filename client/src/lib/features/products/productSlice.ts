@@ -4,16 +4,13 @@ import { Category, Level, ProductState } from '@/types/product';
 
 const initialState: ProductState = {
   product: {
-    id: '',
     link: '',
     price: 0,
     title: '',
     userId: 0,
     category: Category.MATH,
-    createdAt: '',
     description: '',
     niveau: Level.FOURTH,
-    updatedAt: '',
   },
   products: [],
   loading: false,

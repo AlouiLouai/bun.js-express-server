@@ -25,6 +25,7 @@ export function FormSaveProductFields({
 }: FormSaveProductFieldsProps) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4 mb-6">
+      <h2 className="text-xl font-semibold">Step 2: Complete Metadata</h2>
       {/* Title and Price in the same row */}
       <div className="flex space-x-4">
         <div className="flex-1">

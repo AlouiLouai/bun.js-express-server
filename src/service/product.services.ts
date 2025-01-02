@@ -28,6 +28,7 @@ export default class ProductService {
     }
 
     try {
+      product = { ...product, createdAt: new Date() };
       const data = await this.prisma.product.create({
         data: product,
       });
