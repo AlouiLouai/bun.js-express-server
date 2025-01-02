@@ -7,7 +7,6 @@ const initialState: ProductState = {
     link: '',
     price: 0,
     title: '',
-    userId: 0,
     category: Category.MATH,
     description: '',
     niveau: Level.FOURTH,

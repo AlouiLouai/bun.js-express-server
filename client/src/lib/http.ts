@@ -64,6 +64,13 @@ class HttpClient {
       body: options.body ? JSON.stringify(options.body) : undefined,
     });
 
+    console.log('Request Headers:', {
+      'Content-Type': 'application/json',
+      ...(authToken ? { 'Authorization': `Bearer ${authToken}` } : {}),
+      ...(options.headers || {}),
+    })
+    
+
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || `HTTP ${response.status}`);

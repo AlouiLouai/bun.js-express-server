@@ -31,6 +31,7 @@ export const authenticateMiddleware = (jwtSecret: string) => {
       const decoded = jwt.verify(token, jwtSecret);
       req.user = decoded;
 
+
       // Proceed to the next middleware or controller
       next();
     } catch (error) {

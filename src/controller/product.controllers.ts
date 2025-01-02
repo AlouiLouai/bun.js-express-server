@@ -24,13 +24,19 @@ export default class ProductController {
   @post('/save-product')
   public async saveProduct(req: Request, res: Response): Promise<void> {
     try {
+      // Ensure the middleware has attached the user object
+      if (!req.user || typeof req.user !== 'object') {
+        res.status(401).json({ message: 'Unauthorized user.' });
+      }
+
+      // Access user ID from decoded token
+      const userId = req.user?.sub;
       // extract product data from request body
-      const productData: Prisma.ProductCreateInput = req.body;
-      if (
-        !productData.link ||
-        !productData.price ||
-        !productData.title
-      ) {
+      const productData: Prisma.ProductCreateInput = {
+        ...req.body,
+        user: { connect: { id: userId } },
+      };
+      if (!productData.link || !productData.price || !productData.title) {
         throw new Error('link || price || title are required.');
       }
       const product = await this.productService.saveDocument(productData);

@@ -14,7 +14,7 @@ export default class ProductRouter {
     this.initializeRoutes();
   }
 
-  @route('post', '/save')
+  @route('post', '/save', true)
   private async saveProduct(req: Request, res: Response): Promise<void> {
     const productController = new ProductController(this.prisma);
     await productController.saveProduct(req, res);

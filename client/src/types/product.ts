@@ -3,7 +3,6 @@ export interface Product {
   description: string;
   price: number;
   title: string;
-  userId: number;
   category?: Category;
   niveau?: Level;
 }

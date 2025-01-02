@@ -13,7 +13,7 @@ export const saveProductAction = createAsyncThunk<
 >('product/saveProduct', async (productData, { rejectWithValue }) => {
   try {
     const productService = new ProductService();
-    const data = { ...productData, userId: 18 };
+    const data = { ...productData };
     const response = await productService.saveProduct(data);
     return response; // Directly return the Product object
   } catch (error: unknown) {
