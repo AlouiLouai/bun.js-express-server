@@ -6,16 +6,23 @@ import { upload } from '@vercel/blob/client';
 import FormSaveProductFields from './forms/save-product-form';
 import { Category, SchoolYear } from '@/types/product';
 import { DocumentUploadForm } from './forms/document-upload-form';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks';
+import { RootState } from '@/lib/store';
+import { saveProductAction } from '@/lib/features/products/productActions';
 
 export default function MultiStepForm() {
+  const dispatch = useAppDispatch();
+  const { loading, error } = useAppSelector(
+    (state: RootState) => state.product
+  );
   const [step, setStep] = useState(1);
   const [product, setProduct] = useState({
-    blobUrl: '',
+    link: '',
     title: '',
     description: '',
     price: 0,
     category: Category.MATH,
-    className: SchoolYear.FIRST,
+    class: SchoolYear.FIRST,
   });
 
   const [file, setFile] = useState<File | null>(null);
@@ -54,7 +61,7 @@ export default function MultiStepForm() {
 
         console.log('blob ', blob);
 
-        setProduct((prev) => ({ ...prev, blobUrl: blob.url }));
+        setProduct((prev) => ({ ...prev, link: blob.url }));
         toast({
           title: 'Success!',
           description: 'File uploaded successfully!',
@@ -74,14 +81,23 @@ export default function MultiStepForm() {
   }
 
   // Handle Form Submission
-  function handleProductSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleProductSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Simulate saving the product
-    console.log('Product saved:', product);
-    toast({
-      title: 'Product Created!',
-      description: 'Your product has been saved successfully.',
-    });
+    try {
+      console.log('product :', product);
+      await dispatch(saveProductAction(product)).unwrap(); // Dispatch save action
+      toast({
+        title: 'Product Created!',
+        description: 'Your product has been saved successfully.',
+      });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (err: any) {
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: err.message || 'An error occurred while saving.',
+      });
+    }
   }
 
   return (
@@ -102,8 +118,10 @@ export default function MultiStepForm() {
         <FormSaveProductFields
           product={{
             ...product,
-            link: product.blobUrl,
+            link: product.link,
             logo: 'aaaa',
+            class: product.class,
+            category: product.category,
             description: product.description,
             price: Number(product.price),
             title: product.title,
@@ -132,6 +150,9 @@ export default function MultiStepForm() {
             Next
           </button>
         )}
+        {/* Display Loading or Error */}
+        {loading && <p>Saving product...</p>}
+        {error && <p className="text-red-500">Error: {error}</p>}
       </div>
     </div>
   );

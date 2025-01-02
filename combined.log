@@ -1163,3 +1163,128 @@
 {"level":"info","timestamp":"01-02-2025 14:41:38","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
 {"level":"info","timestamp":"01-02-2025 14:41:38","message":"Mapped route: [POST] /reset-password","data":{}}
 {"level":"info","timestamp":"01-02-2025 14:41:38","message":"Mapped route: [POST] /save","data":{}}
+{"level":"error","timestamp":"01-02-2025 17:02:38","message":"Error in save document controller method: Error: link || price || title are required.","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:38","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:03:37","message":"Mapped route: [POST] /save","data":{}}
+{"level":"error","timestamp":"01-02-2025 17:03:46","message":"[PrismaClientValidationError] saveDocument: \nInvalid `this.prisma.product.create()` invocation in\nL:\\express-bun-server\\src\\service\\product.services.ts:31:46\n\n  28 }\n  29 \n  30 try {\n→ 31   const data = await this.prisma.product.create({\n         data: {\n           blobUrl: \"https://kpbxgkv2ygg8agiv.public.blob.vercel-storage.com/Invoice%201-snCIThMKNFyWHKFgNKFIdL5wivmVRN.pdf\",\n           title: \"title 1\",\n           description: \"desc 1\",\n           price: 7,\n           category: \"SCIENCE\",\n           className: \"THIRD\",\n       +   link: String\n         }\n       })\n\nArgument `link` is missing.","data":{}}
+{"level":"error","timestamp":"01-02-2025 17:03:46","message":"Error in save document controller method: PrismaClientValidationError: \nInvalid `this.prisma.product.create()` invocation in\nL:\\express-bun-server\\src\\service\\product.services.ts:31:46\n\n  28 }\n  29 \n  30 try {\n→ 31   const data = await this.prisma.product.create({\n         data: {\n           blobUrl: \"https://kpbxgkv2ygg8agiv.public.blob.vercel-storage.com/Invoice%201-snCIThMKNFyWHKFgNKFIdL5wivmVRN.pdf\",\n           title: \"title 1\",\n           description: \"desc 1\",\n           price: 7,\n           category: \"SCIENCE\",\n           className: \"THIRD\",\n       +   link: String\n         }\n       })\n\nArgument `link` is missing.","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-02-2025 17:04:05","message":"Mapped route: [POST] /save","data":{}}

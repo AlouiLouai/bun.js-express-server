@@ -8,7 +8,7 @@ export interface Product {
   userId: number;
   category?: string;
   class?: string;
-  createdAt: string;
+  createdAt?: string;
 }
 
 export interface ProductState {

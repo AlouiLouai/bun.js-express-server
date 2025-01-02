@@ -13,7 +13,7 @@ interface FormSaveProductFieldsProps {
     title: string;
     userId?: number;
     category?: Category;
-    className?: SchoolYear;
+    class?: SchoolYear;
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   updateField: (field: string, value: any) => void;
@@ -112,9 +112,9 @@ export function FormSaveProductFields({
         </label>
         <select
           id="className"
-          value={product.className || ''}
+          value={product.class || ''}
           onChange={(e) =>
-            updateField('className', e.target.value as SchoolYear)
+            updateField('class', e.target.value as SchoolYear)
           }
           className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-black focus:outline-none focus:ring-1 focus:ring-black"
         >
