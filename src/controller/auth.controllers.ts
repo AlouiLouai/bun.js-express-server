@@ -81,6 +81,32 @@ export default class AuthController {
   }
 
   /**
+   * Handles user Logout
+   * @param req- The HTTP request.
+   * @param res - The HTTP response.
+   */
+  @post('/logout')
+  public async logout(req: Request, res: Response): Promise<void> {
+    try {
+      // Extract userId and ensure it's a valid number
+      const userId = req.user?.sub;
+      // Call the logoutUser method from AuthService
+      await this.authService.logoutUser(Number(userId));
+      // Send a successful response
+      res.status(200).json({
+        message: 'Successfully logged out.',
+      });
+    } catch (error) {
+      this.logger.error(`Error in logout method: ${error}`);
+      // Send an error response with appropriate status and message
+      res.status(400).json({
+        message:
+          error instanceof Error ? error.message : 'Unknown error occurred',
+      });
+    }
+  }
+
+  /**
    * Handles user login
    * @param req- The HTTP request.
    * @param res - The HTTP response.
@@ -136,7 +162,7 @@ export default class AuthController {
   public async users(req: Request, res: Response): Promise<void> {
     try {
       const response = await this.authService.users();
-      res.status(200).json(response)
+      res.status(200).json(response);
     } catch (error) {
       this.logger.error(`Error in get users method: ${error}`);
       // Send an error response with appropriate status and message

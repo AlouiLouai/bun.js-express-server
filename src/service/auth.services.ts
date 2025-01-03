@@ -84,7 +84,7 @@ export default class AuthService {
         },
         this.config.jwt_secret, // Secret
         {
-          expiresIn: "1h", // Token expiry
+          expiresIn: '1h', // Token expiry
         }
       );
       // Generate refresh token (make expiry configurable in the config file)
@@ -112,6 +112,30 @@ export default class AuthService {
       throw new Error(
         'Login failed due to a system issue. Please try again later.'
       );
+    }
+  }
+
+  /**
+   * logout user and delete tokens.
+   * @param userId - The id of the user.
+   * @returns void
+   * @throws Error if logout fails due to  system issues.
+   */
+  public async logoutUser(userId: number): Promise<void> {
+    try {
+      await this.prisma.token.deleteMany({
+        where: { userId: userId },
+      });
+
+      this.logger.info(`User ${userId} successfully logged out.`);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        this.logger.error(`Error during logout: ${error.message}`);
+        throw error;
+      } else {
+        this.logger.error('An unknown error occurred during logout.');
+        throw new Error('Unknown error during logout.');
+      }
     }
   }
 
@@ -257,9 +281,9 @@ export default class AuthService {
 
   public async users(): Promise<User[]> {
     try {
-      const users = await this.prisma.user.findMany()
-      this.logger.info("getting users", users)
-      return users
+      const users = await this.prisma.user.findMany();
+      this.logger.info('getting users', users);
+      return users;
     } catch (error: unknown) {
       if (error instanceof Error) {
         this.logger.error(`Error getting users: ${error.message}`);

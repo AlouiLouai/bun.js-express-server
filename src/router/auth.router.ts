@@ -32,6 +32,12 @@ export default class AuthRouter {
     await authController.login(req, res);
   }
 
+  @route('post', '/logout', true)
+  private async logout(req: Request, res: Response): Promise<void> {
+    const authController = new AuthController(this.prisma);
+    await authController.logout(req, res);
+  }
+
   @route('post', '/forgot-password')
   private async forgotPassword(req: Request, res: Response): Promise<void> {
     const authController = new AuthController(this.prisma);

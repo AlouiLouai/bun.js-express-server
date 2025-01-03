@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import AuthService from '@/services/auth.services';
+import Cookie from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 const useAuth = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter(); 
 
   const register = async (userData: {
     firstname: string;
@@ -47,9 +50,13 @@ const useAuth = () => {
 
   const logout = async () => {
     try {
+      setLoading(true);
       const authService = new AuthService();
-      const response = await authService.logout();
-      return response; // Success
+      await authService.logout();
+      // Remove cookies
+      Cookie.remove('access_token');
+      Cookie.remove('refresh_token');
+      router.push('/auth/sign-in')
     } catch (error: unknown) {
       if (error instanceof Error) {
         setError(error.message || 'An error occurred');

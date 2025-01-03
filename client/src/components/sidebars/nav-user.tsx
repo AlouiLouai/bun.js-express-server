@@ -36,7 +36,7 @@ export function NavUser({
     avatar: string;
   };
 }) {
-  const { logout } = useAuth();
+  const { logout, loading } = useAuth();
   const { isMobile } = useSidebar();
 
   return (
@@ -100,9 +100,9 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <LogOut onClick={logout} />
-              Log out
+            <DropdownMenuItem onClick={logout}>
+              <LogOut />
+              {loading ? 'Logging out...' : 'Log out'}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

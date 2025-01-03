@@ -46,7 +46,7 @@ app.get(
 );
 
 // Start the server
-app.listen(config.app_port, () => {
+const server = app.listen(config.app_port, () => {
   logger.info(`Server is running on http://localhost:${config.app_port}`);
 });
 
@@ -55,4 +55,12 @@ process.on('SIGINT', async () => {
   await prisma.$disconnect();
   logger.info('Prisma client disconnected. Server shutting down.');
   process.exit();
+});
+
+process.on('SIGTERM', () => {
+  logger.info('Received SIGTERM, shutting down...');
+  server.close(() => {
+    logger.info('Server closed');
+    process.exit(0);
+  });
 });
