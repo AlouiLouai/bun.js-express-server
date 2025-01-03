@@ -29,6 +29,7 @@ export default class UserService {
           firstname: true,
           avatar: true,
           products: true,
+          role: true
         },
       });
       if (!exist) {

@@ -46,7 +46,6 @@ const MapI = dynamic(() => import('lucide-react').then((mod) => mod.Map), {
 export function StudentSidebar() {
   const user = useUser(); // Get user data from the custom hook
 
-  console.log('user :', user);
   // This is sample data.
   const data: SidebarData = {
     user: {
