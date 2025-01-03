@@ -15,6 +15,7 @@ import useAuth from '@/hooks/use-auth';
 import { useEffect, useState } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { useSearchParams } from 'next/navigation';
+import { BackgroundGradient } from '@/components/ui/background-gradient';
 
 export function ResetPasswordForm({
   className,
@@ -85,62 +86,66 @@ export function ResetPasswordForm({
   };
 
   return (
-    <div className={cn('flex flex-col gap-6', className)} {...props}>
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="text-xl">Reset Password</CardTitle>
-          <CardDescription>
-            Create a new password for your account.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit}>
-            <div className="grid gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="new_password">New Password</Label>
-                <Input
-                  id="new_password"
-                  type="password"
-                  value={formData.new_password}
-                  onChange={handleChange}
-                  placeholder="********"
-                  required
-                />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="confirm_password">Confirm Password</Label>
-                <Input
-                  id="confirm_password"
-                  type="password"
-                  value={formData.confirm_password}
-                  onChange={handleChange}
-                  placeholder="********"
-                  required
-                />
-                {!passwordMatch && (
-                  <p className="text-sm text-red-500">Passwords do not match</p>
+    <BackgroundGradient className="rounded-[22px] max-w-xl p-4 sm:p-15 bg-white dark:bg-zinc-900">
+      <div className={cn('flex flex-col gap-6', className)} {...props}>
+        <Card>
+          <CardHeader className="text-center">
+            <CardTitle className="text-xl">Reset Password</CardTitle>
+            <CardDescription>
+              Create a new password for your account.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit}>
+              <div className="grid gap-6">
+                <div className="grid gap-2">
+                  <Label htmlFor="new_password">New Password</Label>
+                  <Input
+                    id="new_password"
+                    type="password"
+                    value={formData.new_password}
+                    onChange={handleChange}
+                    placeholder="********"
+                    required
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <Label htmlFor="confirm_password">Confirm Password</Label>
+                  <Input
+                    id="confirm_password"
+                    type="password"
+                    value={formData.confirm_password}
+                    onChange={handleChange}
+                    placeholder="********"
+                    required
+                  />
+                  {!passwordMatch && (
+                    <p className="text-sm text-red-500">
+                      Passwords do not match
+                    </p>
+                  )}
+                  {passwordMatch && (
+                    <Button type="submit" className="w-full">
+                      {loading ? 'Resetting password' : 'Reset Password'}
+                    </Button>
+                  )}
+                </div>
+                {error && (
+                  <p className="text-sm text-red-500">
+                    {error || 'An error occurred. Please try again.'}
+                  </p>
                 )}
-                {passwordMatch && (
-                  <Button type="submit" className="w-full">
-                    {loading ? 'Resetting password' : 'Reset Password'}
-                  </Button>
-                )}
               </div>
-              {error && (
-                <p className="text-sm text-red-500">
-                  {error || 'An error occurred. Please try again.'}
-                </p>
-              )}
-            </div>
-          </form>
-        </CardContent>
-      </Card>
-      <div className="text-center text-sm">
-        Remembered your password?{' '}
-        <a href="/auth/sign-in" className="underline underline-offset-4">
-          Go back to login
-        </a>
+            </form>
+          </CardContent>
+        </Card>
+        <div className="text-center text-sm">
+          Remembered your password?{' '}
+          <a href="/auth/sign-in" className="underline underline-offset-4">
+            Go back to login
+          </a>
+        </div>
       </div>
-    </div>
+    </BackgroundGradient>
   );
 }

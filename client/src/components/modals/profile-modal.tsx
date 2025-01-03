@@ -72,6 +72,7 @@ export function ProfileModal({
   }
 
   return (
+    
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent aria-describedby=''>
         <DialogHeader>

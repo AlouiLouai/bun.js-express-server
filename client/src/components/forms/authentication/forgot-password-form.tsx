@@ -14,6 +14,7 @@ import useAuth from '@/hooks/use-auth';
 import { useState } from 'react';
 import { toast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import { BackgroundGradient } from '@/components/ui/background-gradient';
 
 export function ForgotPasswordForm({
   className,
@@ -42,8 +43,7 @@ export function ForgotPasswordForm({
       });
       router.push('/auth/forgot-password-send');
     } catch (error: unknown) {
-      const errorMessage =
-        (error instanceof Error && error.message)
+      const errorMessage = error instanceof Error && error.message;
 
       // Show error toast
       toast({
@@ -55,46 +55,48 @@ export function ForgotPasswordForm({
   };
 
   return (
-    <div className={cn('flex flex-col gap-6', className)} {...props}>
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="text-xl">Forgot Password?</CardTitle>
-          <CardDescription>
-            Enter your email to receive a password reset link.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit}>
-            <div className="grid gap-6">
-              <div className="grid gap-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="m@example.com"
-                  required
-                />
+    <BackgroundGradient className="rounded-[22px] max-w-xl p-4 sm:p-15 bg-white dark:bg-zinc-900">
+      <div className={cn('flex flex-col gap-6', className)} {...props}>
+        <Card>
+          <CardHeader className="text-center">
+            <CardTitle className="text-xl">Forgot Password?</CardTitle>
+            <CardDescription>
+              Enter your email to receive a password reset link.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit}>
+              <div className="grid gap-6">
+                <div className="grid gap-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="m@example.com"
+                    required
+                  />
+                </div>
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? 'Sending Reset Email' : 'Send Reset Link'}
+                </Button>
+                {error && (
+                  <p className="text-sm text-red-500">
+                    {error || 'An error occurred. Please try again.'}
+                  </p>
+                )}
               </div>
-              <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? 'Sending Reset Email' : 'Send Reset Link'}
-              </Button>
-              {error && (
-                <p className="text-sm text-red-500">
-                  {error || 'An error occurred. Please try again.'}
-                </p>
-              )}
-            </div>
-          </form>
-        </CardContent>
-      </Card>
-      <div className="text-center text-sm">
-        Remembered your password?{' '}
-        <a href="/signin" className="underline underline-offset-4">
-          Go back to login
-        </a>
+            </form>
+          </CardContent>
+        </Card>
+        <div className="text-center text-sm">
+          Got your password?{' '}
+          <a href="/signin" className="underline underline-offset-4">
+            Go back to login
+          </a>
+        </div>
       </div>
-    </div>
+    </BackgroundGradient>
   );
 }

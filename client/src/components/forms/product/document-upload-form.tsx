@@ -4,23 +4,23 @@ import { FormEvent, useState } from 'react';
 import ProgressBar from '../../ProgressBar';
 
 interface FormDocumentUploadFieldProps {
-    file: File | null;
-    setFile: React.Dispatch<React.SetStateAction<File | null>>;
-    preview: string | null;
-    setPreview: React.Dispatch<React.SetStateAction<string | null>>;
-    handleFileUpload: (e: FormEvent<HTMLFormElement>) => void;
-    isUploading: boolean;
-    progress: number;
+  file: File | null;
+  setFile: React.Dispatch<React.SetStateAction<File | null>>;
+  preview: string | null;
+  setPreview: React.Dispatch<React.SetStateAction<string | null>>;
+  handleFileUpload: (e: FormEvent<HTMLFormElement>) => void;
+  isUploading: boolean;
+  progress: number;
 }
 
 export function DocumentUploadForm({
-    file,
-    setFile,
-    preview,
-    setPreview,
-    handleFileUpload,
-    isUploading,
-    progress,
+  file,
+  setFile,
+  preview,
+  setPreview,
+  handleFileUpload,
+  isUploading,
+  progress,
 }: FormDocumentUploadFieldProps) {
   const [dragActive, setDragActive] = useState(false);
 
@@ -140,7 +140,7 @@ export function DocumentUploadForm({
       </label>
       <button
         type="submit"
-        className="px-4 py-2 bg-gray-600 text-white rounded-md"
+        className="mx-auto mt-4 block px-4 py-2 bg-gray-600 text-white rounded-md"
       >
         Upload and continue
       </button>

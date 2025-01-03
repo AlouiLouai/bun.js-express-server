@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks';
 import { RootState } from '@/lib/store';
 import { saveProductAction } from '@/lib/features/products/productActions';
 import { setProduct } from '@/lib/features/products/productSlice';
+import { BackgroundGradient } from '@/components/ui/background-gradient';
 
 export default function MultiStepFormCreateDocument() {
   const dispatch = useAppDispatch();
@@ -56,6 +57,7 @@ export default function MultiStepFormCreateDocument() {
           title: 'Success!',
           description: 'File uploaded successfully!',
         });
+        reset();
         setStep(2); // Move to next step
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
@@ -90,7 +92,7 @@ export default function MultiStepFormCreateDocument() {
   }
 
   return (
-    <div>
+    <BackgroundGradient className="rounded-[22px] max-w-xl p-4 sm:p-10 bg-white dark:bg-zinc-900">
       {step === 1 && (
         <DocumentUploadForm
           file={file}
@@ -142,6 +144,6 @@ export default function MultiStepFormCreateDocument() {
         {loading && <p>Saving product...</p>}
         {error && <p className="text-red-500">Error: {error}</p>}
       </div>
-    </div>
+    </BackgroundGradient>
   );
 }

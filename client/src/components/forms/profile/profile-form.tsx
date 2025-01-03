@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import useUser from '@/hooks/use-user';
+import { BackgroundGradient } from '@/components/ui/background-gradient';
 
 interface ProfileFormProps {
   initialData: {
@@ -97,88 +98,90 @@ export default function ProfileForm({
   };
 
   return (
-    <Card className="w-full max-w-sm mx-auto">
-      <CardHeader>
-        <CardTitle>Update Profile</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="flex justify-center items-center space-x-4">
-            <div className="relative">
-              <Image
-                src={avatarPreview || 'avatar.png'}
-                alt="Avatar Preview"
-                width={96}
-                height={96}
-                className="w-24 h-24 rounded-full object-cover border-2 border-gray-200"
-                unoptimized
+    <BackgroundGradient className="rounded-[22px] max-w-xl p-4 sm:p-10 bg-white dark:bg-zinc-900">
+      <Card className="w-full max-w-sm mx-auto">
+        <CardHeader>
+          <CardTitle>Update Profile</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="flex justify-center items-center space-x-4">
+              <div className="relative">
+                <Image
+                  src={avatarPreview || 'avatar.png'}
+                  alt="Avatar Preview"
+                  width={96}
+                  height={96}
+                  className="w-24 h-24 rounded-full object-cover border-2 border-gray-200"
+                  unoptimized
+                />
+                <label
+                  htmlFor="avatar"
+                  className="absolute bottom-0 right-0 bg-black bg-opacity-50 text-white text-sm p-1 cursor-pointer rounded-full"
+                >
+                  Upload
+                </label>
+              </div>
+              <input
+                id="avatar"
+                name="avatar"
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleAvatarChange}
               />
-              <label
-                htmlFor="avatar"
-                className="absolute bottom-0 right-0 bg-black bg-opacity-50 text-white text-sm p-1 cursor-pointer rounded-full"
+            </div>
+
+            <div className="flex space-x-4">
+              <div className="flex-1">
+                <Label htmlFor="firstName">First Name</Label>
+                <Input
+                  id="firstname"
+                  name="firstname"
+                  value={formData.firstname}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="flex-1">
+                <Label htmlFor="lastName">Last Name</Label>
+                <Input
+                  id="lastname"
+                  name="lastname"
+                  value={formData.lastname}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+            </div>
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="flex justify-center items-center space-x-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={onCancel}
+                disabled={isSubmitting}
               >
-                Upload
-              </label>
+                Cancel
+              </Button>
+              <Button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Saving...' : 'Save Changes'}
+              </Button>
             </div>
-            <input
-              id="avatar"
-              name="avatar"
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleAvatarChange}
-            />
-          </div>
-
-          <div className="flex space-x-4">
-            <div className="flex-1">
-              <Label htmlFor="firstName">First Name</Label>
-              <Input
-                id="firstname"
-                name="firstname"
-                value={formData.firstname}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="flex-1">
-              <Label htmlFor="lastName">Last Name</Label>
-              <Input
-                id="lastname"
-                name="lastname"
-                value={formData.lastname}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-          <div>
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="flex justify-center items-center space-x-2">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={onCancel}
-              disabled={isSubmitting}
-            >
-              Cancel
-            </Button>
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? 'Saving...' : 'Save Changes'}
-            </Button>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+          </form>
+        </CardContent>
+      </Card>
+    </BackgroundGradient>
   );
 }
