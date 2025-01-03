@@ -3,7 +3,7 @@ import { AppSidebar } from '../sidebars/app-sidebar';
 // Dynamically import icons to avoid SSR issues
 import dynamic from 'next/dynamic';
 import { SidebarData } from '@/types/sidebar';
-import useUser from '@/hooks/use-User';
+import useUser from '@/hooks/use-user';
 // Dynamically load icons
 const SquareTerminalI = dynamic(
   () => import('lucide-react').then((mod) => mod.SquareTerminal),
@@ -45,6 +45,8 @@ const MapI = dynamic(() => import('lucide-react').then((mod) => mod.Map), {
 
 export function StudentSidebar() {
   const user = useUser(); // Get user data from the custom hook
+
+  console.log('user :', user);
   // This is sample data.
   const data: SidebarData = {
     user: {

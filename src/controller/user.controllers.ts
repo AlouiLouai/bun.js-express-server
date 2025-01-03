@@ -26,8 +26,7 @@ export default class UserController {
     try {
       const profile = await this.userService.getUserById(Number(req.user?.sub));
       // Send a success response
-      res.status(201).json({
-        message: 'Profile got successfully',
+      res.status(201).send({
         profile,
       });
     } catch (error) {

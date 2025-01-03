@@ -2,30 +2,24 @@
 import React, { useEffect } from 'react';
 import { RootState } from '@/lib/store';
 import { useAppDispatch, useAppSelector } from '@/lib/hooks';
-import { fetchUsers } from '@/lib/features/profile/userActions';
-import { User } from '@/types/users';
+import { fetchUsers } from '@/lib/features/profile/profileActions';
 
 export function AllProducts() {
   const dispatch = useAppDispatch();
-  const { users, loading, error } = useAppSelector(
-    (state: RootState) => state.user
-  );
+  const { user } = useAppSelector((state: RootState) => state.profile);
 
   useEffect(() => {
     dispatch(fetchUsers());
   }, [dispatch]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-
   return (
     <div>
-      <h1>User List</h1>
-      <ul>
-        {users.map((user: User) => (
-          <li key={user.id}>{user.firstname}</li>
-        ))}
-      </ul>
+      <h1>User model</h1>
+      {user && (
+        <ul>
+          <li key={user.lastname}>{user.firstname}</li>
+        </ul>
+      )}
     </div>
   );
 }

@@ -7,7 +7,9 @@ export interface User {
 }
 
 export interface UserState {
-  user: User | null;
+  user: Partial<User> | null;
+  status: string;
+  error: string | undefined;
 }
 
 export interface ApiUser {
