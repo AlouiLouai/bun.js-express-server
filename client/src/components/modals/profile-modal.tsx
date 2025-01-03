@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dialog'; // Radix UI Dialog
 import ProfileForm from '@/components/forms/profile/profile-form'; // Profile Form
 import ProfileCard from '@/components/profile/profile-card'; // Profile Card
+import useUser from '@/hooks/use-user';
 
 export function ProfileModal({
   isOpen,
@@ -18,20 +19,16 @@ export function ProfileModal({
   isOpen: boolean;
   onClose: () => void;
 }) {
+  const profile = useUser();
   const [isEditing, setIsEditing] = useState(false);
-  const [profileData, setProfileData] = useState({
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'john.doe@example.com',
-    avatarUrl: '/placeholder.svg?height=96&width=96',
-  });
 
-  // This will handle saving the profile data
-  const handleSave = (newData: typeof profileData) => {
-    setProfileData(newData);
-    setIsEditing(false); // Close the form and switch back to the view mode
-    onClose(); // Close the modal
-  };
+  // Provide default values for profile data if any value is undefined
+  const [profileData, setProfileData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    avatar: '/default-avatar.png', // Provide a fallback avatar URL
+  });
 
   // This will handle canceling the edits
   const handleCancel = () => {
@@ -46,9 +43,37 @@ export function ProfileModal({
     }
   }, [isOpen]);
 
+  // Update profileData once profile is available
+  useEffect(() => {
+    if (profile) {
+      setProfileData({
+        firstname: profile?.firstname ?? '',
+        lastname: profile?.lastname ?? '',
+        email: profile?.email ?? '',
+        avatar: profile?.avatar ?? '/avatar.png',
+      });
+    }
+  }, [profile]); // This effect depends on `profile`
+
+  // Loading check for user data
+  if (!profile) {
+    return (
+      <Dialog open={isOpen} onOpenChange={onClose}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Loading Profile...</DialogTitle>
+          </DialogHeader>
+          <DialogFooter>
+            <DialogClose onClick={handleCancel}>Close</DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    );
+  }
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent>
+      <DialogContent aria-describedby=''>
         <DialogHeader>
           <DialogTitle></DialogTitle>
         </DialogHeader>
@@ -65,17 +90,10 @@ export function ProfileModal({
         {isEditing && (
           <ProfileForm
             initialData={profileData}
-            onSave={handleSave} // Save changes
-            onCancel={handleCancel} // Cancel changes
+            onCancel={handleCancel}
+            onSuccess={onClose}
           />
         )}
-
-        <DialogFooter>
-          {/* Cancel Button */}
-          <DialogClose onClick={handleCancel}>Cancel</DialogClose>
-          {/* Save Button */}
-          {isEditing && <DialogClose onClick={() => handleSave(profileData)}>Save</DialogClose>}
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );

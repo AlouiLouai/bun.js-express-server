@@ -13,5 +13,3 @@
 
 
 ### TOMORROW : 
-- fix logout 
-- get profile and update profile + using vercel/blob
