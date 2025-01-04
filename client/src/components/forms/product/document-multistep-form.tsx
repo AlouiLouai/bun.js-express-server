@@ -92,7 +92,7 @@ export default function MultiStepFormCreateDocument() {
   }
 
   return (
-    <BackgroundGradient className="rounded-[22px] max-w-xl p-4 sm:p-10 bg-white dark:bg-zinc-900">
+    <BackgroundGradient className="rounded-[22px] max-w-[100vw] p-4 sm:p-10 bg-white dark:bg-zinc-900">
       {step === 1 && (
         <DocumentUploadForm
           file={file}

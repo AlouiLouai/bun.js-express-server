@@ -4,6 +4,7 @@ import { products } from '@/components/mock/products';
 import { ProductDisplayStudent } from '@/types/product';
 import Navbar from '@/components/student/products/navbar';
 import ProductGrid from '@/components/student/products/product-grid';
+import { BackgroundGradient } from '@/components/ui/background-gradient';
 
 type FilterState = {
   category: string;
@@ -54,12 +55,22 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-8 text-center">Products</h1>
-      <div className="flex justify-center mb-8">
-        <Navbar filters={filters} onFilterChange={handleFilterChange} />
+    <BackgroundGradient className="rounded-[22px] max-w-[100vw] p-4 sm:p-10 bg-white dark:bg-zinc-900">
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold mb-8 text-center">Products</h1>
+        <div className="flex justify-center mb-8">
+          <Navbar filters={filters} onFilterChange={handleFilterChange} />
+        </div>
+
+        {/* Conditionally render product grid or message */}
+        {filteredProducts.length === 0 ? (
+          <div className="text-center text-xl text-gray-500 p-8">
+            <p>No products available that match your filters</p>
+          </div>
+        ) : (
+          <ProductGrid products={filteredProducts} />
+        )}
       </div>
-      <ProductGrid products={filteredProducts} />
-    </div>
+    </BackgroundGradient>
   );
 }
