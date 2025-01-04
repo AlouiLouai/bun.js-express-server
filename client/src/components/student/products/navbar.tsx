@@ -1,4 +1,5 @@
 'use client';
+
 import { Input } from '@/components/ui/input';
 import {
   Select,
@@ -9,6 +10,11 @@ import {
 } from '@/components/ui/select';
 import { Category, Level } from '@/types/product';
 import { useState } from 'react';
+import {
+  AiOutlineSearch,
+  AiOutlineClose,
+  AiOutlineReload,
+} from 'react-icons/ai';
 
 type FilterState = {
   category: string;
@@ -28,13 +34,15 @@ export default function Navbar({ filters, onFilterChange }: NavbarProps) {
     typeof setTimeout
   > | null>(null);
 
+  const [search, setSearch] = useState(filters.search);
+
   const handleDebouncedSearch = (value: string) => {
     if (debounceTimeout) {
       clearTimeout(debounceTimeout);
     }
     const timeout = setTimeout(() => {
       onFilterChange({ search: value });
-    }, 300); // Adjust debounce time as needed
+    }, 300);
     setDebounceTimeout(timeout);
   };
 
@@ -43,7 +51,19 @@ export default function Navbar({ filters, onFilterChange }: NavbarProps) {
   };
 
   const handleResetSearch = () => {
+    setSearch('');
     onFilterChange({ search: '' });
+  };
+
+  const handleResetAllFilters = () => {
+    setSearch('');
+    onFilterChange({
+      category: '',
+      level: '',
+      minPrice: undefined,
+      maxPrice: undefined,
+      search: '',
+    });
   };
 
   return (
@@ -52,7 +72,7 @@ export default function Navbar({ filters, onFilterChange }: NavbarProps) {
         {/* Category Filter */}
         <div className="flex items-center gap-2">
           {filters.category ? (
-            <div className="flex items-center gap-2 bg-blue-700 text-white py-1 px-3 rounded-full">
+            <div className="flex items-center gap-2 bg-slate-950 text-white py-1 px-3 rounded-full">
               <span>{filters.category}</span>
               <button
                 className="text-white"
@@ -80,7 +100,7 @@ export default function Navbar({ filters, onFilterChange }: NavbarProps) {
         {/* Level Filter */}
         <div className="flex items-center gap-2">
           {filters.level ? (
-            <div className="flex items-center gap-2 bg-blue-700 text-white py-1 px-3 rounded-full">
+            <div className="flex items-center gap-2 bg-slate-950 text-white py-1 px-3 rounded-full">
               <span>{filters.level}</span>
               <button
                 className="text-white"
@@ -134,20 +154,35 @@ export default function Navbar({ filters, onFilterChange }: NavbarProps) {
         />
 
         {/* Search Filter */}
-        <div className="flex items-center gap-2">
+        <div className="relative w-[200px]">
           <Input
             type="text"
             placeholder="Search"
-            className="w-[200px]"
-            defaultValue={filters.search}
-            onChange={(e) => handleDebouncedSearch(e.target.value)}
+            className="w-full pl-10 pr-3 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all"
+            value={search} // Controlled value
+            onChange={(e) => {
+              setSearch(e.target.value); // Update local state on change
+              handleDebouncedSearch(e.target.value); // Handle debounce
+            }}
           />
-          {filters.search && (
-            <button className="text-red-500" onClick={handleResetSearch}>
-              &#x2715;
+          <AiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+          {search && (
+            <button
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+              onClick={handleResetSearch} // Clear input and reset filter state
+            >
+              <AiOutlineClose />
             </button>
           )}
         </div>
+
+        {/* Reset All Filters Button */}
+        <button
+          className="flex items-center gap-2 bg-slate-950 text-white py-1 px-3 rounded-full hover:bg-red-600 transition-all"
+          onClick={handleResetAllFilters}
+        >
+          <AiOutlineReload /> Reset All Filters
+        </button>
       </div>
     </nav>
   );

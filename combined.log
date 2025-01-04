@@ -4246,3 +4246,23 @@
 {"level":"info","timestamp":"01-04-2025 20:25:14","message":"Mapped route: [POST] /save","data":{}}
 {"level":"info","timestamp":"01-04-2025 20:25:14","message":"Mapped route: [GET] /","data":{}}
 {"level":"info","timestamp":"01-04-2025 20:25:14","message":"Mapped route: [PUT] /","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Registered service: UserService","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Registered controller: UserController at path: /profile","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Mapped route: [POST] /logout","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Mapped route: [GET] /","data":{}}
+{"level":"info","timestamp":"01-04-2025 21:56:33","message":"Mapped route: [PUT] /","data":{}}
