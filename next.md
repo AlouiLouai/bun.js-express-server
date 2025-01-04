@@ -1,10 +1,9 @@
 ## figure out email template with express
-## when logout, I should delete the token linked to user from database
 
 ## work on login with google
 
 
-### FEATURES :
+### TOMORROW : 
 - teacher : 
     - display all documents for specific teacher
 - student : 
@@ -12,4 +11,4 @@
     - figure out stripe payement for documents
 
 
-### TOMORROW : 
+    -- need to figureout when the access token end to redirect to login directly 

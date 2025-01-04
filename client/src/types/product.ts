@@ -7,6 +7,17 @@ export interface Product {
   niveau?: Level;
 }
 
+export interface ProductDisplayStudent {
+  id?: number;
+  link?: string;
+  description: string;
+  price: number;
+  title: string;
+  category?: Category;
+  niveau?: Level;
+}
+
+
 export interface ProductState {
   product: Product;
   products: Product[];
