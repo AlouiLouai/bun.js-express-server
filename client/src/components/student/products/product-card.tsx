@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ProductDisplayStudent } from '@/types/product';
+import { ProductDisplayStudent } from '@/types/IProduct';
 import ProductCardModal from '../../modals/product-card-modal';
 import {
   Card,

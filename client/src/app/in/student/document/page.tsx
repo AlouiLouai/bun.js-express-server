@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { products } from '@/components/mock/products';
-import { ProductDisplayStudent } from '@/types/product';
+import { ProductDisplayStudent } from '@/types/IProduct';
 import Navbar from '@/components/student/products/navbar';
 import ProductGrid from '@/components/student/products/product-grid';
 

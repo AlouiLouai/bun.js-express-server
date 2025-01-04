@@ -8,7 +8,7 @@ import { TeamSwitcher } from './team-switcher';
 import { NavMain } from './nav-main';
 import { NavProjects } from './nav-projects';
 import { NavUser } from './nav-user';
-import { SidebarData } from '@/types/sidebar';
+import { SidebarData } from '@/types/ISidebar';
 import { LucideIcon } from 'lucide-react';
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {

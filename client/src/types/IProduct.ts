@@ -8,13 +8,24 @@ export interface Product {
 }
 
 export interface ProductDisplayStudent {
-  id?: number;
+  id: number;
   link?: string;
   description: string;
   price: number;
   title: string;
   category?: Category;
   niveau?: Level;
+}
+
+// Modify ProductDisplayStudent to extend Record<string, unknown>
+export interface ProductDisplayStudentAlgoliaSearch extends Record<string, unknown> {
+  id: number;
+  title: string;
+  description: string;
+  category: Category;
+  niveau: Level;
+  price: number;
+  link?: string;
 }
 
 

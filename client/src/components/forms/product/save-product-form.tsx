@@ -1,6 +1,6 @@
 'use client';
 
-import { Category, Level } from '@/types/product';
+import { Category, Level } from '@/types/IProduct';
 import { FormEvent } from 'react';
 
 interface FormSaveProductFieldsProps {

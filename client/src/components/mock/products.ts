@@ -1,6 +1,6 @@
-import { Category, Level, ProductDisplayStudent } from '@/types/product';
+import { Category, Level, ProductDisplayStudentAlgoliaSearch } from '@/types/IProduct';
 
-export const products: ProductDisplayStudent[] = [
+export const products: ProductDisplayStudentAlgoliaSearch[] = [
   {
     id: 1,
     title: 'Smartphone',

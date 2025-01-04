@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Product } from '@/types/product'
+import { Product } from '@/types/IProduct'
 
 type ProductModalProps = {
   product: Partial<Product>

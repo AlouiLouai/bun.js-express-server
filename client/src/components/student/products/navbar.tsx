@@ -9,7 +9,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { Category, Level } from '@/types/product';
+import { Category, Level } from '@/types/IProduct';
 
 type NavbarProps = {
   onFilter: (filters: {

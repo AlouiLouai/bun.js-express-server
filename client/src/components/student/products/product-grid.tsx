@@ -1,4 +1,4 @@
-import { ProductDisplayStudent } from '@/types/product';
+import { ProductDisplayStudent } from '@/types/IProduct';
 import ProductCard from './product-card';
 
 type ProductGridProps = {

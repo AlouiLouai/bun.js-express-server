@@ -1,5 +1,5 @@
 import HttpClient from '@/lib/http';
-import { Product } from '@/types/product';
+import { Product } from '@/types/IProduct';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
 

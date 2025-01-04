@@ -2,7 +2,7 @@
 import { AppSidebar } from '../sidebars/app-sidebar';
 // Dynamically import icons to avoid SSR issues
 import dynamic from 'next/dynamic';
-import { SidebarData } from '@/types/sidebar';
+import { SidebarData } from '@/types/ISidebar';
 import useUser from '@/hooks/use-user';
 // Dynamically load icons
 const SquareTerminalI = dynamic(

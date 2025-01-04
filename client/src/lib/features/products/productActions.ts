@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { Product } from '@/types/product';
+import { Product } from '@/types/IProduct';
 import ProductService from '@/services/product.services';
 
 // Type for the error response
