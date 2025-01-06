@@ -20,6 +20,12 @@ export default class ProductRouter {
     await productController.saveProduct(req, res);
   }
 
+  @route('get', '/getAll', false)
+  private async getAllProducts(req: Request, res: Response): Promise<void> {
+    const productController = new ProductController(this.prisma);
+    await productController.getPaginatedProducts(req, res);
+  }
+
   private initializeRoutes(): void {
     // Automatically register all routes defined with `@route`
     registerRouter(this.router, this);

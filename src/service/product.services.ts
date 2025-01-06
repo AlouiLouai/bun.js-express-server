@@ -1,6 +1,7 @@
 import { Prisma, type PrismaClient, type Product } from '@prisma/client';
 import Logger from '../common/Logger';
 import { service } from '../common/decorators/layer.decorators';
+import type { StudentProduct } from '../Interface/IProduct';
 
 @service()
 export default class ProductService {
@@ -66,5 +67,28 @@ export default class ProductService {
     }
 
     throw error; // Rethrow the error for higher-level handling
+  }
+
+  /**
+   * 
+   * @param page the page number
+   * @returns items to display paginated
+   */
+  public async products(page: number): Promise<StudentProduct[]> {
+    const itemsPerPage = 14; // Number of items per page
+    const skip = (page - 1) * itemsPerPage; // Skip items based on the current page
+  
+    return this.prisma.product.findMany({
+      skip: skip, // Skip items based on the page number
+      take: itemsPerPage, // Limit results to itemsPerPage
+      select: {
+        id: true,
+        title: true,
+        description: true,
+        category: true,
+        niveau: true,
+        price: true,
+      },
+    });
   }
 }

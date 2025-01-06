@@ -9,6 +9,3 @@
 - student : 
     - display all documents + figureout search engine for better filter in categories and professors
     - figure out stripe payement for documents
-
-
-    -- need to figureout when the access token end to redirect to login directly 
