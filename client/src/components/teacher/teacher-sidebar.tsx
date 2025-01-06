@@ -54,7 +54,7 @@ export function TeacherSidebar() {
     },
     teams: [
       {
-        name: 'EduForm',
+        name: 'Education Plateform',
         logo: GalleryVerticalEndI,
         plan: 'Plateform',
       },

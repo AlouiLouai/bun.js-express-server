@@ -55,7 +55,7 @@ export function StudentSidebar() {
     },
     teams: [
       {
-        name: 'Acme Inc',
+        name: 'Education Plateform',
         logo: GalleryVerticalEndI,
         plan: 'Enterprise',
       },
@@ -72,21 +72,21 @@ export function StudentSidebar() {
     ],
     navMain: [
       {
-        title: 'Playground',
+        title: 'Documents',
         url: '#',
         icon: SquareTerminalI,
         isActive: true,
         items: [
           {
-            title: 'History',
-            url: '#',
+            title: 'all products',
+            url: '/in/student/document',
           },
           {
-            title: 'Starred',
-            url: '#',
+            title: 'whishlist',
+            url: '/in/student',
           },
           {
-            title: 'Settings',
+            title: 'Sold products',
             url: '#',
           },
         ],
