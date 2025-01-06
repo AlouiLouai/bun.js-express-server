@@ -81,6 +81,7 @@ export default class AuthService {
         {
           sub: user.id,
           email: user.email,
+          role: user.role,
         },
         this.config.jwt_secret, // Secret
         {

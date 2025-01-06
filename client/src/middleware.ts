@@ -14,6 +14,8 @@ export function middleware(req: NextRequest) {
     const payload = JSON.parse(atob(token.split('.')[1])); // Decoding JWT payload (base64)
     const { role, exp } = payload;
 
+    console.log('Role:', role, 'Expiration:', exp);
+
     // Check if the token has expired
     if (Date.now() >= exp * 1000) {
       return NextResponse.redirect(new URL('/auth/sign-in', req.url));
