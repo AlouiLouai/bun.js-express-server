@@ -1,5 +1,5 @@
 import HttpClient from '@/lib/http';
-import { Product } from '@/types/product';
+import { Product, ProductDisplayStudent } from '@/types/product';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL as string;
 
@@ -12,5 +12,13 @@ export default class ProductService {
 
   public async saveProduct(productData: Partial<Product>): Promise<Product> {
     return this.httpClient.post<Product>(`/product/save`, productData);
+  }
+
+  public async getAllProductsForStudent(
+    page: number
+  ): Promise<{ products: ProductDisplayStudent[] }> {
+    return this.httpClient.get<{ products: ProductDisplayStudent[] }>(
+      `/product/getAll?page=${page}`
+    );
   }
 }
