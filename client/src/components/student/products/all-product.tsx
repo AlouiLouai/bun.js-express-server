@@ -114,7 +114,7 @@ export function ProductsPage() {
   return (
     <BackgroundGradient className="rounded-[22px] max-w-[100vw] p-4 sm:p-10 bg-white dark:bg-zinc-900">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8 text-center">Products</h1>
+        <h1 className="text-3xl font-bold mb-8 text-center">Documents</h1>
         <div className="flex justify-center mb-8">
           <Navbar filters={filters} onFilterChange={handleFilterChange} />
         </div>
