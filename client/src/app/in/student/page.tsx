@@ -1,3 +1,10 @@
-export default function Page() {
-  return <h1>Student</h1>;
+import RedisTest from '@/components/redisTest';
+
+export default function HomePage() {
+  return (
+    <main>
+      <h1>Next.js Redis Test</h1>
+      <RedisTest />
+    </main>
+  );
 }

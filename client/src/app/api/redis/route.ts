@@ -7,7 +7,7 @@ export async function GET() {
         const redis = await initializeRedis();
 
         // Set and Get example
-        await redis.set('exampleKey', 'Hello from Redis!');
+        await redis.set('exampleKey', 'Hello from louai!');
         const value = await redis.get('exampleKey');
 
         // Return a successful response
