@@ -2,6 +2,8 @@
 
 ## work on login with google
 
+## complete the redis implementation !! check the lib/redis & api/redis to implement the whishlist I want 
+
 
 ### TOMORROW : 
 - teacher : 
