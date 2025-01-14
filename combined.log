@@ -4440,3 +4440,47 @@
 {"level":"info","timestamp":"01-12-2025 12:30:46","message":"Mapped route: [GET] /","data":{}}
 {"level":"info","timestamp":"01-12-2025 12:30:46","message":"Mapped route: [PUT] /","data":{}}
 {"level":"info","timestamp":"01-12-2025 12:30:47","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Registered service: UserService","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Registered controller: UserController at path: /profile","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Mapped route: [POST] /logout","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Mapped route: [GET] /getAll","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Mapped route: [GET] /","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Mapped route: [PUT] /","data":{}}
+{"level":"info","timestamp":"01-12-2025 15:04:23","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Registered service: UserService","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Registered controller: UserController at path: /profile","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [POST] /logout","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [GET] /getAll","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [GET] /","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [PUT] /","data":{}}
+{"level":"info","timestamp":"01-14-2025 15:51:13","message":"Server is running on http://localhost:5000","data":{}}
