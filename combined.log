@@ -4484,3 +4484,25 @@
 {"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [GET] /","data":{}}
 {"level":"info","timestamp":"01-14-2025 15:51:11","message":"Mapped route: [PUT] /","data":{}}
 {"level":"info","timestamp":"01-14-2025 15:51:13","message":"Server is running on http://localhost:5000","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Initializing configuration...","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Configuration initialized successfully.","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Registered service: TokenService","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Registered service: EmailService","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Registered service: AuthService","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Registered controller: AuthController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Registered service: ProductService","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Registered controller: ProductController at path: /auth","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Registered service: UserService","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Registered controller: UserController at path: /profile","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Mapped route: [GET] /users","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Mapped route: [POST] /register","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Mapped route: [POST] /login","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Mapped route: [POST] /logout","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Mapped route: [POST] /forgot-password","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Expected query parameters for route [POST] /reset-password:","data":{"0":"resetToken"}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Mapped route: [POST] /reset-password","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Mapped route: [POST] /save","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Mapped route: [GET] /getAll","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Mapped route: [GET] /","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Mapped route: [PUT] /","data":{}}
+{"level":"info","timestamp":"01-15-2025 19:56:56","message":"Server is running on http://localhost:5000","data":{}}

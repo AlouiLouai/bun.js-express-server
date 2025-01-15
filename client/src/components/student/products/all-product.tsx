@@ -42,8 +42,7 @@ export function ProductsPage() {
       const productService = new ProductService();
 
       try {
-        const response = await productService.getAllProductsForStudent(page); // Fetch page based on currentPage
-        console.log('Fetched products:', response);
+        const response = await productService.getAllProductsForStudent(page); // Fetch page based on currentPage 
 
         if (response && Array.isArray(response.products)) {
           setProducts((prevProducts) => [
